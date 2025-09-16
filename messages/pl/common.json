@@ -1,0 +1,239 @@
+{
+  "seo": {
+    "title": "GrandDom — Doskonałość w Każdej Dziedzinie",
+    "description": "Świeże podejście do rynku nieruchomości i inwestycji — sprzedaż, kupno, wynajem oraz inwestycje zagraniczne."
+  },
+  "brand": {
+    "name": "GrandDom",
+    "tagline": "Doskonałość w Każdej Dziedzinie"
+  },
+  "badge": {
+    "new": "Nowa Agencja"
+  },
+  "hero": {
+    "heading": "GrandDom",
+    "subheading": "Twój Dom w Sercu Warszawy",
+    "text": "Świeże podejście do rynku nieruchomości. Specjalizujemy się w sprzedaży, kupnie i wynajmie nieruchomości w Warszawie i województwie mazowieckim. Dodatkowo oferujemy inwestycje w słonecznej Hiszpanii."
+  },
+  "specialization": {
+    "title": "Nasza Specjalizacja",
+    "items": [
+      "Sprzedaż Mieszkań",
+      "Kupno Nieruchomości",
+      "Wynajem Długoterminowy",
+      "Doradztwo Inwestycyjne",
+      "Obsługa Prawna",
+      "Inwestycje Hiszpańskie"
+    ]
+  },
+  "contact": {
+    "getInTouch": "Skontaktuj się z nami",
+    "email": {
+      "label": "Email",
+      "value": "granddom7@op.pl",
+      "copySuccess": "Adres email został skopiowany"
+    },
+    "phone": {
+      "label": "Telefon",
+      "value": "+48 (886) 193 598",
+      "copySuccess": "Numer telefonu został skopiowany"
+    },
+    "location": {
+      "label": "Lokalizacja",
+      "value": "Warszawa, Polska"
+    },
+    "website": {
+      "label": "Strona internetowa",
+      "value": "www.granddom.com"
+    }
+  },
+  "social": {
+    "title": "Znajdź nas w mediach",
+    "links": {
+      "linkedin": "",
+      "twitter": "",
+      "instagram": ""
+    }
+  },
+  "cta": {
+    "startProject": "Rozpocznij Współpracę",
+    "viewProperties": "Zobacz Dostępne Nieruchomości",
+    "learnSpain": "Dowiedz się więcej o Hiszpanii"
+  },
+  "realEstateServices": [
+    {
+      "title": "Sprzedaż Mieszkań w Warszawie",
+      "description": "Kompleksowa obsługa sprzedaży mieszkań, domów i lokali komercyjnych w Warszawie i województwie mazowieckim.",
+      "features": [
+        "Wycena nieruchomości",
+        "Marketing i promocja",
+        "Obsługa prawna"
+      ]
+    },
+    {
+      "title": "Kupno Nieruchomości",
+      "description": "Pomoc w znalezieniu idealnej nieruchomości dopasowanej do Twoich potrzeb i budżetu.",
+      "features": [
+        "Indywidualne wyszukiwanie",
+        "Negocjacje cenowe",
+        "Wsparcie w finansowaniu"
+      ]
+    },
+    {
+      "title": "Wynajem Długoterminowy",
+      "description": "Profesjonalne zarządzanie wynajmem nieruchomości prywatnych i komercyjnych.",
+      "features": [
+        "Selekcja najemców",
+        "Obsługa administracyjna",
+        "Maksymalizacja zysków"
+      ]
+    },
+    {
+      "title": "Doradztwo Prawne",
+      "description": "Kompleksowe wsparcie prawne przy transakcjach nieruchomościowych.",
+      "features": [
+        "Sprawdzenie dokumentów",
+        "Obsługa notarialna",
+        "Bezpieczeństwo transakcji"
+      ]
+    },
+    {
+      "title": "Doradztwo Inwestycyjne",
+      "description": "Profesjonalne doradztwo w zakresie inwestycji w nieruchomości na polskim rynku.",
+      "features": [
+        "Analiza rynku",
+        "Ocena rentowności",
+        "Strategia inwestycyjna"
+      ]
+    },
+    {
+      "title": "Inwestycje w Hiszpanii",
+      "description": "Możliwość inwestowania w słoneczne nieruchomości hiszpańskie z opcjami zarządzania i dochodu pasywnego.",
+      "features": [
+        "Partnerstwa z deweloperami",
+        "Zarządzanie wynajmem",
+        "Dochód pasywny"
+      ]
+    }
+  ],
+  "propertyShowcase": {
+    "heading": "Ekskluzywne Nieruchomości",
+    "subtitle": "Odkryj wyjątkowe nieruchomości, które oferujemy naszym klientom w Warszawie i okolicach.",
+    "featureStats": [
+      {
+        "value": "50+",
+        "label": "Dostępnych Mieszkań"
+      },
+      {
+        "value": "15+",
+        "label": "Dzielnic Warszawy"
+      }
+    ],
+    "description": "Nasze nieruchomości charakteryzują się najwyższą jakością wykonania, eleganckim designem i przemyślanymi rozwiązaniami architektonicznymi. Każda z nich to miejsce, które może stać się Twoim wymarzonym domem."
+  },
+  "spanishInvestment": {
+    "heading": "🇪🇸 Hiszpania - Inwestycja, która daje więcej!",
+    "intro": "Oprócz naszych głównych usług w Warszawie, oferujemy wyjątkową możliwość inwestowania w słonecznej Hiszpanii.",
+    "offersTitle": "Co oferujemy:",
+    "offers": [
+      "Nieruchomości poniżej cen rynkowych",
+      "Dochód pasywny od pierwszego dnia",
+      "Partnerstwo z lokalnymi deweloperami",
+      "Zarządzanie wynajmem"
+    ],
+    "benefitsTitle": "Dodatkowe korzyści:",
+    "benefits": [
+      "Hiszpańskie słońce przez cały rok",
+      "Dostęp do projektów hotelowych",
+      "Kompleksowa obsługa prawna",
+      "Wsparcie w formalnościach i lokalnym zarządzaniu"
+    ],
+    "guaranteeNote": "Gwarantowany zwrot z inwestycji — warunki ustalane indywidualnie w umowie"
+  },
+  "visionMission": {
+    "visionHeading": "Nasza Wizja",
+    "visionText": "Stać się wiodącą agencją nieruchomości w Warszawie, pomagającą klientom znaleźć wymarzone mieszkania i osiągnąć sukces inwestycyjny na polskim i hiszpańskim rynku nieruchomości.",
+    "missionHeading": "Nasza Misja",
+    "missionText": "Dostarczanie wyjątkowych usług w zakresie nieruchomości, które przynoszą wymierne rezultaty, wspierają innowacje i tworzą trwałe partnerstwa z naszymi klientami."
+  },
+  "futureGoals": [
+    {
+      "title": "Lider w Warszawie",
+      "description": "Stać się rozpoznawalną marką na warszawskim rynku nieruchomości w ciągu dwóch lat."
+    },
+    {
+      "title": "Ekspansja Usług",
+      "description": "Rozszerzyć ofertę o kompleksowe usługi inwestycyjne i zarządzanie nieruchomościami."
+    },
+    {
+      "title": "Hiszpańska Przygoda",
+      "description": "Pomóc 50+ inwestorom osiągnąć dochód pasywny z hiszpańskich nieruchomości."
+    }
+  ],
+  "values": {
+    "heading": "Nasze Wartości",
+    "subtitle": "Zasady, które kierują wszystkim, co robimy i definiują nas jako firmę.",
+    "items": [
+      {
+        "title": "Doskonałość",
+        "description": "Dążymy do perfekcji w każdym projekcie, dostarczając rezultaty przewyższające oczekiwania."
+      },
+      {
+        "title": "Uczciwość",
+        "description": "Zaufanie i transparentność stanowią fundament wszystkich naszych relacji z klientami."
+      },
+      {
+        "title": "Innowacyjność",
+        "description": "Wykorzystujemy najnowsze technologie i kreatywne rozwiązania do rozwiązywania złożonych wyzwań."
+      },
+      {
+        "title": "Współpraca",
+        "description": "Sukces osiągamy poprzez partnerstwo, pracę zespołową i zrozumienie unikalnych potrzeb klientów."
+      }
+    ]
+  },
+  "stats": {
+    "items": [
+      {
+        "value": "2024",
+        "label": "Rok założenia"
+      },
+      {
+        "value": "100%",
+        "label": "Zadowolenie klientów"
+      },
+      {
+        "value": "24/7",
+        "label": "Dostępne wsparcie"
+      },
+      {
+        "value": "∞",
+        "label": "Możliwości"
+      }
+    ]
+  },
+  "footer": {
+    "brand": "GrandDom",
+    "copyright": "© 2024 GrandDom. Gotowi, aby zmieniać rzeczywistość.",
+    "tagline": "Twoje marzenia są naszym zadaniem - od pierwszego kontaktu aż do przekazania kluczy."
+  },
+  "languages": {
+    "available": [
+      {
+        "code": "pl",
+        "name": "Polski",
+        "flag": "🇵🇱"
+      },
+      {
+        "code": "ua",
+        "name": "Українська",
+        "flag": "🇺🇦"
+      },
+      {
+        "code": "en",
+        "name": "English",
+        "flag": "🇬🇧"
+      }
+    ]
+  }
+}

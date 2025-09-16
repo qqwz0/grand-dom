@@ -1,0 +1,244 @@
+{
+  "seo": {
+    "title": "GrandDom — Excellence in Every Field",
+    "description": "A fresh approach to the real estate market and investments — sales, purchases, rentals and overseas investments."
+  },
+  "brand": {
+    "name": "GrandDom",
+    "tagline": "Excellence in Every Field"
+  },
+  "badge": {
+    "new": "New Agency"
+  },
+  "hero": {
+    "heading": "GrandDom",
+    "subheading": "Your Home in the Heart of Warsaw",
+    "text": "A fresh approach to the real estate market. We specialize in sales, purchases and rentals in Warsaw and the Masovian region. We also offer investments in sunny Spain."
+  },
+  "specialization": {
+    "title": "Our Specialization",
+    "items": [
+      "Apartment Sales",
+      "Property Purchase",
+      "Long-term Rentals",
+      "Investment Advisory",
+      "Legal Services",
+      "Spanish Investments"
+    ]
+  },
+  "contact": {
+    "getInTouch": "Get in touch",
+    "email": {
+      "label": "Email",
+      "value": "granddom7@op.pl",
+      "copySuccess": "Email address copied"
+    },
+    "phone": {
+      "label": "Phone",
+      "value": "+48 (886) 193 598",
+      "copySuccess": "Phone number copied"
+    },
+    "location": {
+      "label": "Location",
+      "value": "Warsaw, Poland"
+    },
+    "website": {
+      "label": "Website",
+      "value": "www.granddom.com"
+    }
+  },
+  "social": {
+    "title": "Find us on social media",
+    "links": {
+      "linkedin": "",
+      "twitter": "",
+      "instagram": ""
+    }
+  },
+  "cta": {
+    "startProject": "Start a Project",
+    "viewProperties": "View Available Properties",
+    "learnSpain": "Learn more about Spain"
+  },
+  "realEstateServices": [
+    {
+      "title": "Apartment Sales in Warsaw",
+      "description": "Comprehensive service for selling apartments, houses and commercial spaces in Warsaw and the Masovian region.",
+      "features": [
+        "Property valuation",
+        "Marketing and promotion",
+        "Legal support"
+      ]
+    },
+    {
+      "title": "Property Purchase",
+      "description": "Assistance in finding the ideal property tailored to your needs and budget.",
+      "features": [
+        "Individual search",
+        "Price negotiation",
+        "Financing support"
+      ]
+    },
+    {
+      "title": "Long-term Rentals",
+      "description": "Professional management of private and commercial rental properties.",
+      "features": [
+        "Tenant selection",
+        "Administrative support",
+        "Revenue optimization"
+      ]
+    },
+    {
+      "title": "Legal Advisory",
+      "description": "Comprehensive legal support for real estate transactions.",
+      "features": [
+        "Document verification",
+        "Notarial services",
+        "Transaction security"
+      ]
+    },
+    {
+      "title": "Investment Advisory",
+      "description": "Professional guidance on real estate investments in the Polish market.",
+      "features": [
+        "Market analysis",
+        "Profitability assessment",
+        "Investment strategy"
+      ]
+    },
+    {
+      "title": "Investments in Spain",
+      "description": "Opportunity to invest in sunny Spanish properties with management and passive income options.",
+      "features": [
+        "Partnerships with developers",
+        "Rental management",
+        "Passive income"
+      ]
+    }
+  ],
+  "propertyShowcase": {
+    "title": "Elegant Interiors, Exceptional Quality",
+    "heading": "Exclusive Properties",
+    "subtitle": "Discover the unique properties we offer to our clients in Warsaw and the surrounding area.",
+    "featureStats": [
+      {
+        "value": "50+",
+        "label": "Available Apartments"
+      },
+      {
+        "value": "15+",
+        "label": "Warsaw Districts"
+      }
+    ],
+    "description": "Our properties are characterized by top-quality workmanship, elegant design and thoughtful architectural solutions. Each one is a place that can become your dream home."
+  },
+  "spanishInvestment": {
+    "heading": "🇪🇸 Spain — An investment that gives more!",
+    "intro": "In addition to our core services in Warsaw, we offer a unique opportunity to invest in sunny Spain.",
+    "offersTitle": "What we offer:",
+    "offers": [
+      "Properties below market price",
+      "Passive income from day one",
+      "Partnerships with local developers",
+      "Rental management"
+    ],
+    "benefitsTitle": "Additional benefits:",
+    "benefits": [
+      "Spanish sun all year round",
+      "Access to hotel projects",
+      "Comprehensive legal support",
+      "Assistance with formalities and local management"
+    ],
+    "guaranteeNote": "Guaranteed return on investment — terms agreed individually in the contract"
+  },
+  "realEstateServicesTitle": "Our Services",
+  "realEstateServicesSubtitle": "Comprehensive solutions tailored to your needs in the Warsaw real estate market.",
+  "visionMission": {
+    "title": "Our Vision & Mission",
+    "intro": "As a new company, we are guided by ambitious goals and a clear vision for the future",
+    "visionHeading": "Our Vision",
+    "visionText": "To become a leading real estate agency in Warsaw, helping clients find their dream homes and achieve investment success in the Polish and Spanish markets.",
+    "missionHeading": "Our Mission",
+    "missionText": "To deliver exceptional real estate services that deliver measurable results, support innovation and create lasting partnerships with our clients."
+  },
+  "futureGoals": [
+    {
+      "title": "Leader in Warsaw",
+      "description": "Become a recognized brand on the Warsaw real estate market within two years."
+    },
+    {
+      "title": "Service Expansion",
+      "description": "Expand the offer to include comprehensive investment services and property management."
+    },
+    {
+      "title": "Spanish Adventure",
+      "description": "Help 50+ investors achieve passive income from Spanish properties."
+    }
+  ],
+  "values": {
+    "heading": "Our Values",
+    "subtitle": "Principles that guide everything we do and define us as a company.",
+    "items": [
+      {
+        "title": "Excellence",
+        "description": "We strive for excellence in every project, delivering results that exceed expectations."
+      },
+      {
+        "title": "Integrity",
+        "description": "Trust and transparency are the foundation of all our client relationships."
+      },
+      {
+        "title": "Innovation",
+        "description": "We use modern technologies and creative solutions to solve complex challenges."
+      },
+      {
+        "title": "Collaboration",
+        "description": "We achieve success through partnership, teamwork and understanding clients' unique needs."
+      }
+    ]
+  },
+  "stats": {
+    "items": [
+      {
+        "value": "2024",
+        "label": "Founded"
+      },
+      {
+        "value": "100%",
+        "label": "Client Satisfaction"
+      },
+      {
+        "value": "24/7",
+        "label": "Support Available"
+      },
+      {
+        "value": "∞",
+        "label": "Possibilities"
+      }
+    ]
+  },
+  "footer": {
+    "brand": "GrandDom",
+    "copyright": "© 2024 GrandDom. Ready to change reality.",
+    "tagline": "Your dreams are our mission - from first contact to handing over the keys."
+  },
+  "languages": {
+    "available": [
+      {
+        "code": "pl",
+        "name": "Polish",
+        "flag": "🇵🇱"
+      },
+      {
+        "code": "ua",
+        "name": "Ukrainian",
+        "flag": "🇺🇦"
+      },
+      {
+        "code": "en",
+        "name": "English",
+        "flag": "🇬🇧"
+      }
+    ]
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "brand": { "name": "GrandDom" },
+  "links": { "home": "/" },
+  "languages": {
+    "available": [
+      { "code": "pl", "name": "Polski", "flag": "🇵🇱" },
+      { "code": "en", "name": "English", "flag": "🇬🇧" },
+      { "code": "ua", "name": "Українська", "flag": "🇺🇦" }
+    ]
+  },
+  "ui": {
+    "backToHome": "Back to homepage",
+    "fastResponse": "Guaranteed response within 24 hours",
+    "freeConsult": "Free initial consultation",
+    "custom": "Tailored solutions",
+    "expert": "Expert support"
+  },
+  "contact": {
+    "getInTouch": "Get in touch with us",
+    "email": {
+      "label": "Email",
+      "value": "granddom7@op.pl",
+      "copySuccess": "Email address has been copied"
+    },
+    "phone": {
+      "label": "Phone",
+      "value": "+48 (886) 193 598",
+      "copySuccess": "Phone number has been copied"
+    },
+    "location": { "label": "Location", "value": "Warsaw, Poland" }
+  },
+  "form": {
+    "title": "Project details",
+    "ariaLabel": "Project details form",
+    "nameLabel": "Full name *",
+    "namePlaceholder": "John Smith",
+    "emailLabel": "Email address *",
+    "emailPlaceholder": "john@example.com",
+    "phoneLabel": "Phone number",
+    "phonePlaceholder": "+48 888 888 888",
+    "companyLabel": "Company name",
+    "companyPlaceholder": "Your company",
+    "serviceLabel": "Required service *",
+    "servicePlaceholder": "Select a service",
+    "budgetLabel": "Project budget",
+    "budgetPlaceholder": "Select budget range",
+    "timelineLabel": "Project timeline",
+    "timelinePlaceholder": "When do you need it delivered?",
+    "messageLabel": "Project description *",
+    "messagePlaceholder": "Describe the project, goals and requirements...",
+    "send": "Submit project details",
+    "submittingText": "Sending...",
+    "successTitle": "Thank you!",
+    "successText": "We’ve received your project details. We’ll get back to you within 24 hours."
+  },
+  "contactPage": {
+    "title": "Start your project",
+    "subtitle": "Tell us about your project — we’ll prepare a tailored offer.",
+    "services": [
+      { "value": "consulting", "label": "Business consulting" },
+      { "value": "development", "label": "Development" },
+      { "value": "strategy", "label": "Growth strategy" },
+      { "value": "digital", "label": "Digital transformation" },
+      { "value": "ai", "label": "AI solutions" },
+      { "value": "other", "label": "Other" }
+    ],
+    "budgets": [
+      { "value": "5k-10k", "label": "$5,000 - $10,000" },
+      { "value": "10k-25k", "label": "$10,000 - $25,000" },
+      { "value": "25k-50k", "label": "$25,000 - $50,000" },
+      { "value": "50k+", "label": "$50,000+" },
+      { "value": "discuss", "label": "Let’s discuss" }
+    ],
+    "timelines": [
+      { "value": "asap", "label": "As soon as possible" },
+      { "value": "1month", "label": "Within 1 month" },
+      { "value": "3months", "label": "Within 3 months" },
+      { "value": "6months", "label": "Within 6 months" },
+      { "value": "flexible", "label": "I’m flexible" }
+    ]
+  },
+  "whyChoose": {
+    "title": "Why GrandDom?",
+    "items": []
+  }
+}

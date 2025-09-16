@@ -1,21 +1,23 @@
-import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
-import { GeistMono } from 'geist/font/mono'
-import './globals.css'
+// app/[lng]/layout.tsx
+import type { Metadata } from "next";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
+import "./globals.css";
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
-}
+  title: "Grand Dom",
+  description: "Grand Dom - real estate agency",
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+  params,
+}: {
+  children: React.ReactNode;
+  params: { lng: string };
+}) {
   return (
-    <html lang="en">
+    <html lang={params.lng}>
       <head>
         <style>{`
 html {
@@ -27,5 +29,5 @@ html {
       </head>
       <body>{children}</body>
     </html>
-  )
+  );
 }
