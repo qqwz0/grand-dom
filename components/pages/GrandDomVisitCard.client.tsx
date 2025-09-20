@@ -90,8 +90,10 @@ export default function GrandDomVisitCard({ messages }: { messages: any }) {
     languages[0];
 
   const switchLanguage = (langCode: string) => {
-    const newPath =
-      pathname?.replace(/\/(pl|ua)/, `/${langCode}`) || `/${langCode}`;
+    const langCodes = languages.map((lang: any) => lang.code);
+    const regex = new RegExp(`^/(${langCodes.join("|")})`);
+
+    const newPath = pathname?.replace(regex, `/${langCode}`) || `/${langCode}`;
     router.push(newPath);
     setShowLanguages(false);
   };
@@ -206,12 +208,10 @@ export default function GrandDomVisitCard({ messages }: { messages: any }) {
     ]
   );
 
-  // social links
-  const social = get(["social", "links"], {
-    linkedin: "#",
-    twitter: "#",
-    instagram: "#",
-  });
+  // // social links
+  // const social = get(["social", "links"], {
+  //   instagram: "https://www.instagram.com/mieszkam.wa_wa",
+  // });
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-100 via-emerald-100 to-teal-100">
@@ -267,13 +267,13 @@ export default function GrandDomVisitCard({ messages }: { messages: any }) {
       <section className="min-h-screen flex items-center justify-center p-4 relative">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <Image
+          {/* <Image
             src="/hero-property.jpg"
             alt="Elegant property interior"
             fill
             className="object-cover opacity-20"
             priority
-          />
+          /> */}
           <div className="absolute inset-0 bg-gradient-to-br from-green-100/80 via-emerald-100/80 to-teal-100/80" />
         </div>
 
@@ -437,18 +437,8 @@ export default function GrandDomVisitCard({ messages }: { messages: any }) {
                     <div className="flex gap-3">
                       {[
                         {
-                          Icon: Linkedin,
-                          href: social?.linkedin ?? "#",
-                          label: "LinkedIn",
-                        },
-                        {
-                          Icon: Twitter,
-                          href: social?.twitter ?? "#",
-                          label: "Twitter",
-                        },
-                        {
                           Icon: Instagram,
-                          href: social?.instagram ?? "#",
+                          href: "https://www.instagram.com/mieszkam.wa_wa",
                           label: "Instagram",
                         },
                       ].map(({ Icon, href, label }) => (
@@ -658,12 +648,12 @@ export default function GrandDomVisitCard({ messages }: { messages: any }) {
 
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="relative h-96 rounded-lg overflow-hidden shadow-xl">
-              <Image
+              {/* <Image
                 src="/hero-property.jpg"
                 alt="Eleganckie wnętrze nieruchomości"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-500"
-              />
+              /> */}
             </div>
             <div className="space-y-6">
               <h3 className="text-2xl font-bold text-gray-800">

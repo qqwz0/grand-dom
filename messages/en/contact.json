@@ -4,8 +4,8 @@
   "languages": {
     "available": [
       { "code": "pl", "name": "Polski", "flag": "🇵🇱" },
-      { "code": "en", "name": "English", "flag": "🇬🇧" },
-      { "code": "ua", "name": "Українська", "flag": "🇺🇦" }
+      { "code": "ua", "name": "Українська", "flag": "🇺🇦" },
+      { "code": "en", "name": "English", "flag": "🇬🇧" }
     ]
   },
   "ui": {
@@ -79,8 +79,13 @@
       { "value": "flexible", "label": "I’m flexible" }
     ]
   },
-  "whyChoose": {
-    "title": "Why GrandDom?",
-    "items": []
+  "grand_dom": {
+    "title": "Why Us",
+    "items": [
+      "Guaranteed response within 24 hours",
+      "Free initial consultation",
+      "Personalized solutions",
+      "Support from a team of experts"
+    ]
   }
 }

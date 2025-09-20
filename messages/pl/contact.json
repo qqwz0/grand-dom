@@ -4,8 +4,8 @@
   "languages": {
     "available": [
       { "code": "pl", "name": "Polski", "flag": "🇵🇱" },
-      { "code": "en", "name": "English", "flag": "🇬🇧" },
-      { "code": "ua", "name": "Українська", "flag": "🇺🇦" }
+      { "code": "ua", "name": "Українська", "flag": "🇺🇦" },
+      { "code": "en", "name": "English", "flag": "🇬🇧" }
     ]
   },
   "ui": {

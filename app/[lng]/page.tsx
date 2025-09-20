@@ -1,6 +1,6 @@
 import fs from "fs/promises";
 import path from "path";
-import GrandDomVisitCard from "@/components/GrandDomVisitCard.client";
+import GrandDomVisitCard from "../../components/pages/GrandDomVisitCard.client";
 
 export async function generateStaticParams() {
   return [{ lng: "pl" }, { lng: "ua" }];

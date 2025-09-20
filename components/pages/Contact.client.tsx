@@ -61,30 +61,30 @@ export default function ContactPage({ messages }: ContactPageProps) {
     ) ?? fallback;
 
   // Languages (from messages or fallback)
-  const languages: { code: string; name: string; flag?: string }[] = get(
+  const languages = get(
     ["languages", "available"],
     [
       { code: "pl", name: "Polski", flag: "🇵🇱" },
-      { code: "en", name: "English", flag: "🇬🇧" },
       { code: "ua", name: "Українська", flag: "🇺🇦" },
+      { code: "en", name: "English", flag: "🇬🇧" },
     ]
   );
 
-  // Determine current language from pathname prefix (/pl, /en, /ua)
-  const localeMatch = pathname.match(/^\/(pl|en|ua)(?=\/|$)/);
+  console.log(languages);
+
   const currentLanguage =
-    languages.find((l) => l.code === (localeMatch?.[1] ?? languages[0].code)) ||
+    languages.find((lang: any) => pathname?.includes(`/${lang.code}`)) ||
     languages[0];
 
   // preserve rest of the path when switching language
   const switchLanguage = (langCode: string) => {
-    const stripped = pathname.replace(/^\/(pl|en|ua)/, "");
-    const normalized = stripped.startsWith("/") ? stripped : `/${stripped}`;
-    const newPath = `/${langCode}${normalized === "/" ? "" : normalized}`;
-    router.push(newPath || `/${langCode}`);
+    const langCodes = languages.map((lang: any) => lang.code);
+    const regex = new RegExp(`^/(${langCodes.join("|")})`);
+
+    const newPath = pathname?.replace(regex, `/${langCode}`) || `/${langCode}`;
+    router.push(newPath);
     setShowLanguages(false);
   };
-
   // close dropdown on outside click or Escape
   useEffect(() => {
     const onDocClick = (e: MouseEvent) => {
@@ -137,11 +137,24 @@ export default function ContactPage({ messages }: ContactPageProps) {
     e.preventDefault();
     setIsLoading(true);
 
-    // Replace with real submission logic (API call / webhook)
-    await new Promise((r) => setTimeout(r, 1500));
+    try {
+      const response = await fetch("https://formspree.io/f/xnnbewjw", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    setIsLoading(false);
-    setIsSubmitted(true);
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        alert("Something went wrong. Please try again!");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Submission failed. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   // localized strings with fallbacks
@@ -261,17 +274,12 @@ export default function ContactPage({ messages }: ContactPageProps) {
               }`}
             />
           </Button>
-
           {showLanguages && (
-            <div
-              role="menu"
-              className="absolute top-full mt-2 right-0 w-48 bg-white/95 backdrop-blur-sm border-green-200 shadow-xl"
-            >
-              <div className="p-2">
-                {languages.map((language) => (
+            <Card className="absolute top-full mt-2 right-0 w-48 bg-white/95 backdrop-blur-sm border-green-200 shadow-xl">
+              <CardContent className="p-2">
+                {languages.map((language: any) => (
                   <Button
                     key={language.code}
-                    role="menuitem"
                     variant={
                       currentLanguage.code === language.code
                         ? "default"
@@ -289,8 +297,34 @@ export default function ContactPage({ messages }: ContactPageProps) {
                     {language.name}
                   </Button>
                 ))}
-              </div>
-            </div>
+              </CardContent>
+            </Card>
+          )}
+          {showLanguages && (
+            <Card className="absolute top-full mt-2 right-0 w-48 bg-white/95 backdrop-blur-sm border-green-200 shadow-xl">
+              <CardContent className="p-2">
+                {languages.map((language: any) => (
+                  <Button
+                    key={language.code}
+                    variant={
+                      currentLanguage.code === language.code
+                        ? "default"
+                        : "ghost"
+                    }
+                    size="sm"
+                    className={`w-full justify-start mb-1 last:mb-0 transition-colors ${
+                      currentLanguage.code === language.code
+                        ? "bg-green-500 text-white hover:bg-green-600"
+                        : "text-gray-700 hover:bg-green-50"
+                    }`}
+                    onClick={() => switchLanguage(language.code)}
+                  >
+                    <span className="mr-3 text-lg">{language.flag}</span>
+                    {language.name}
+                  </Button>
+                ))}
+              </CardContent>
+            </Card>
           )}
         </div>
       </div>
