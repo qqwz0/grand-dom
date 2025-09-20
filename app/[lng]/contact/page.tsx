@@ -1,19 +1,42 @@
-"use client";
-
-import React from "react";
+import { notFound } from "next/navigation";
 import ContactPage from "../../../components/pages/Contact.client";
-import pl from "../../../messages/pl/contact.json";
-import ua from "../../../messages/ua/contact.json";
-import en from "../../../messages/en/contact.json";
-import { usePathname } from "next/navigation";
+import {
+  isValidLocale,
+  getMessages,
+  type SupportedLocale,
+} from "@/lib/translations";
+import { generatePageMetadata } from "@/lib/metadata";
 
-const LOCALES: Record<string, any> = { pl, ua, en };
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lng: string }>;
+}) {
+  const { lng } = await params;
 
-export default function Page() {
-  const pathname = usePathname() || "/";
-  const langMatch = pathname.match(/^\/(pl|ua|en)(?=\/|$)/);
-  const lang = langMatch?.[1] ?? "pl";
-  const messages = LOCALES[lang] ?? LOCALES.en;
+  if (!isValidLocale(lng)) {
+    return {};
+  }
 
-  return <ContactPage messages={messages} />;
+  const contactMsgs = await getMessages(lng, "contact");
+  return generatePageMetadata(lng, "/contact", contactMsgs.title);
+}
+
+export default async function Contact({
+  params,
+}: {
+  params: Promise<{ lng: string }>;
+}) {
+  const { lng } = await params;
+
+  if (!isValidLocale(lng)) {
+    notFound();
+  }
+
+  const [contactMsgs, commonMsgs] = await Promise.all([
+    getMessages(lng, "contact"),
+    getMessages(lng, "common"),
+  ]);
+
+  return <ContactPage messages={contactMsgs} />;
 }
