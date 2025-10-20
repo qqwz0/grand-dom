@@ -8,7 +8,7 @@
     "tagline": "Excellence in Every Field"
   },
   "badge": {
-    "new": "New Agency"
+    "new": "Real Estate Agency"
   },
   "hero": {
     "heading": "GrandDom",
@@ -18,12 +18,11 @@
   "specialization": {
     "title": "Our Specialization",
     "items": [
-      "Apartment Sales",
-      "Property Purchase",
-      "Long-term Rentals",
-      "Investment Advisory",
-      "Legal Services",
-      "Spanish Investments"
+      "Apartments",
+      "Single-family houses",
+      "Plots of land",
+      "Commercial properties",
+      "OFF MARKET"
     ]
   },
   "contact": {
@@ -219,7 +218,7 @@
   },
   "footer": {
     "brand": "GrandDom",
-    "copyright": "© 2024 GrandDom. Ready to change reality.",
+    "copyright": "© 2025 GrandDom. Ready to change reality.",
     "tagline": "Your dreams are our mission - from first contact to handing over the keys."
   },
   "languages": {

@@ -8,7 +8,7 @@
     "tagline": "Doskonałość w Każdej Dziedzinie"
   },
   "badge": {
-    "new": "Nowa Agencja"
+    "new": "Agencja Nieruchomości"
   },
   "hero": {
     "heading": "GrandDom",
@@ -18,12 +18,11 @@
   "specialization": {
     "title": "Nasza Specjalizacja",
     "items": [
-      "Sprzedaż Mieszkań",
-      "Kupno Nieruchomości",
-      "Wynajem Długoterminowy",
-      "Doradztwo Inwestycyjne",
-      "Obsługa Prawna",
-      "Inwestycje Hiszpańskie"
+      "Mieszkania",
+      "Domy jednorodzinne",
+      "Działki",
+      "Lokale",
+      "OFF MARKET"
     ]
   },
   "contact": {
@@ -214,7 +213,7 @@
   },
   "footer": {
     "brand": "GrandDom",
-    "copyright": "© 2024 GrandDom. Gotowi, aby zmieniać rzeczywistość.",
+    "copyright": "© 2025 GrandDom. Gotowi, aby zmieniać rzeczywistość.",
     "tagline": "Twoje marzenia są naszym zadaniem - od pierwszego kontaktu aż do przekazania kluczy."
   },
   "languages": {

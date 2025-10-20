@@ -46,12 +46,14 @@ export default function ContactPage({ messages }: ContactPageProps) {
     name: "",
     email: "",
     phone: "",
-    company: "",
     service: "",
-    budget: "",
+    type: "",
     message: "",
     timeline: "",
+    price: "",
   });
+
+  console.log(formData);
 
   // Safe accessor
   const get = (path: string[], fallback: any = undefined) =>
@@ -204,7 +206,7 @@ export default function ContactPage({ messages }: ContactPageProps) {
   );
 
   const budgetOptions = get(
-    ["contactPage", "budgets"],
+    ["contactPage", "type"],
     [
       { value: "5k-10k", label: "$5,000 - $10,000" },
       { value: "10k-25k", label: "$10,000 - $25,000" },
@@ -224,6 +226,27 @@ export default function ContactPage({ messages }: ContactPageProps) {
       { value: "flexible", label: "I'm flexible" },
     ]
   );
+
+  const pricePlaceholders = get(["form", "pricePlaceholders"], {
+    en: { buying: "e.g., 100000-250000", renting: "e.g., 500-1500" },
+    ua: { buying: "нп., 100000-250000", renting: "наприклад, 500-1500" },
+    pl: { buying: "np. 100000-250000", renting: "np. 500-1500" },
+  });
+
+  const priceHelperText = get(["form", "priceHelperText"], {
+    en: {
+      buying: "Enter total price range",
+      renting: "Enter monthly price range",
+    },
+    ua: {
+      buying: "Введіть загальний діапазон цін",
+      renting: "Введіть щомісячний діапазон цін",
+    },
+    pl: {
+      buying: "Wprowadź całkowity przedział cenowy",
+      renting: "Wprowadź miesięczny przedział cenowy",
+    },
+  });
 
   // When submitted - localized thank-you screen
   if (isSubmitted) {
@@ -397,7 +420,7 @@ export default function ContactPage({ messages }: ContactPageProps) {
                           onChange={(e) =>
                             handleInputChange("name", e.target.value)
                           }
-                          className="border-green-200 focus:border-green-500"
+                          className="border-green-200 focus:border-green-500 w-full"
                           placeholder={get(
                             ["form", "namePlaceholder"],
                             "John Doe"
@@ -416,7 +439,7 @@ export default function ContactPage({ messages }: ContactPageProps) {
                           onChange={(e) =>
                             handleInputChange("email", e.target.value)
                           }
-                          className="border-green-200 focus:border-green-500"
+                          className="border-green-200 focus:border-green-500 w-full"
                           placeholder={get(
                             ["form", "emailPlaceholder"],
                             "john@example.com"
@@ -437,27 +460,10 @@ export default function ContactPage({ messages }: ContactPageProps) {
                           onChange={(e) =>
                             handleInputChange("phone", e.target.value)
                           }
-                          className="border-green-200 focus:border-green-500"
+                          className="border-green-200 focus:border-green-500 w-full"
                           placeholder={get(
                             ["form", "phonePlaceholder"],
                             "+1 (555) 123-4567"
-                          )}
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="company" className="text-gray-700">
-                          {get(["form", "companyLabel"], "Company Name")}
-                        </Label>
-                        <Input
-                          id="company"
-                          value={formData.company}
-                          onChange={(e) =>
-                            handleInputChange("company", e.target.value)
-                          }
-                          className="border-green-200 focus:border-green-500"
-                          placeholder={get(
-                            ["form", "companyPlaceholder"],
-                            "Your Company"
                           )}
                         />
                       </div>
@@ -474,7 +480,7 @@ export default function ContactPage({ messages }: ContactPageProps) {
                             handleInputChange("service", value)
                           }
                         >
-                          <SelectTrigger className="border-green-200 focus:border-green-500">
+                          <SelectTrigger className="border-green-200 focus:border-green-500 w-full w-full">
                             <SelectValue
                               placeholder={get(
                                 ["form", "servicePlaceholder"],
@@ -492,19 +498,19 @@ export default function ContactPage({ messages }: ContactPageProps) {
                         </Select>
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="budget" className="text-gray-700">
-                          {get(["form", "budgetLabel"], "Project Budget")}
+                        <Label htmlFor="type" className="text-gray-700">
+                          {get(["form", "budgetLabel"], "Property Type")}
                         </Label>
                         <Select
                           onValueChange={(value) =>
-                            handleInputChange("budget", value)
+                            handleInputChange("type", value)
                           }
                         >
-                          <SelectTrigger className="border-green-200 focus:border-green-500">
+                          <SelectTrigger className="border-green-200 focus:border-green-500 w-full">
                             <SelectValue
                               placeholder={get(
                                 ["form", "budgetPlaceholder"],
-                                "Select budget range"
+                                "Select property type"
                               )}
                             />
                           </SelectTrigger>
@@ -519,33 +525,70 @@ export default function ContactPage({ messages }: ContactPageProps) {
                       </div>
                     </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="timeline" className="text-gray-700">
-                        {get(["form", "timelineLabel"], "Project Timeline")}
-                      </Label>
-                      <Select
-                        onValueChange={(value) =>
-                          handleInputChange("timeline", value)
-                        }
-                      >
-                        <SelectTrigger className="border-green-200 focus:border-green-500">
-                          <SelectValue
-                            placeholder={get(
-                              ["form", "timelinePlaceholder"],
-                              "When do you need this completed?"
-                            )}
-                          />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {timelineOptions.map((t: any) => (
-                            <SelectItem key={t.value} value={t.value}>
-                              {t.label}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      {(formData.service === "buying" ||
+                        formData.service === "renting") && (
+                        <div className="space-y-2">
+                          <Label htmlFor="price" className="text-gray-700">
+                            {
+                              get(["form", "priceLabel"], {
+                                en: "Price Range (zł)",
+                                ua: "Діапазон цін (zł)",
+                                pl: "Zakres cenowy (zł)",
+                              })[currentLanguage.code]
+                            }
+                          </Label>
+                          <div className="flex gap-2">
+                            <Input
+                              id="price"
+                              type="text"
+                              onChange={(e) =>
+                                handleInputChange("price", e.target.value)
+                              }
+                              className="border-green-200 focus:border-green-500 w-full"
+                              placeholder={
+                                pricePlaceholders[currentLanguage.code][
+                                  formData.service
+                                ]
+                              }
+                            />
+                          </div>
+                          <p className="text-xs text-gray-500">
+                            {
+                              priceHelperText[currentLanguage.code][
+                                formData.service
+                              ]
+                            }
+                          </p>
+                        </div>
+                      )}
+                      <div className="space-y-2">
+                        <Label htmlFor="timeline" className="text-gray-700">
+                          {get(["form", "timelineLabel"], "Project Timeline")}
+                        </Label>
+                        <Select
+                          onValueChange={(value) =>
+                            handleInputChange("timeline", value)
+                          }
+                        >
+                          <SelectTrigger className="border-green-200 focus:border-green-500 w-full">
+                            <SelectValue
+                              placeholder={get(
+                                ["form", "timelinePlaceholder"],
+                                "When do you need this completed?"
+                              )}
+                            />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {timelineOptions.map((t: any) => (
+                              <SelectItem key={t.value} value={t.value}>
+                                {t.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
                     </div>
-
                     <div className="space-y-2">
                       <Label htmlFor="message" className="text-gray-700">
                         {get(["form", "messageLabel"], "Project Description *")}
@@ -557,7 +600,7 @@ export default function ContactPage({ messages }: ContactPageProps) {
                         onChange={(e) =>
                           handleInputChange("message", e.target.value)
                         }
-                        className="border-green-200 focus:border-green-500 min-h-[120px]"
+                        className="border-green-200 focus:border-green-500 w-full min-h-[120px]"
                         placeholder={get(
                           ["form", "messagePlaceholder"],
                           "Tell us about your project, goals, and any specific requirements..."

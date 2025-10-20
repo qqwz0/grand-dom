@@ -40,36 +40,35 @@
     "phonePlaceholder": "+48 888 888 888",
     "companyLabel": "Company name",
     "companyPlaceholder": "Your company",
-    "serviceLabel": "Required service *",
+    "serviceLabel": "What are you looking to do? *",
     "servicePlaceholder": "Select a service",
-    "budgetLabel": "Project budget",
-    "budgetPlaceholder": "Select budget range",
+    "budgetLabel": "Property type",
+    "budgetPlaceholder": "Select property type",
     "timelineLabel": "Project timeline",
     "timelinePlaceholder": "When do you need it delivered?",
-    "messageLabel": "Project description *",
-    "messagePlaceholder": "Describe the project, goals and requirements...",
+    "messageLabel": "Property Details *",
+    "messagePlaceholder": "Describe the property, your requirements and preferences...",
     "send": "Submit project details",
     "submittingText": "Sending...",
     "successTitle": "Thank you!",
     "successText": "We’ve received your project details. We’ll get back to you within 24 hours."
   },
   "contactPage": {
-    "title": "Start your project",
-    "subtitle": "Tell us about your project — we’ll prepare a tailored offer.",
+    "title": "Find Your Perfect Home",
+    "subtitle": "Tell us what you’re looking for — we’ll find the best options for you.",
     "services": [
-      { "value": "consulting", "label": "Business consulting" },
-      { "value": "development", "label": "Development" },
-      { "value": "strategy", "label": "Growth strategy" },
-      { "value": "digital", "label": "Digital transformation" },
-      { "value": "ai", "label": "AI solutions" },
-      { "value": "other", "label": "Other" }
+      { "value": "buying", "label": "🛒 Buying" },
+      { "value": "selling", "label": "💰 Selling" },
+      { "value": "renting", "label": "🏠 Renting" },
+      { "value": "cleaning", "label": "🧹 Apartment cleaning" },
+      { "value": "minor_repairs", "label": "🔧 Minor repairs" },
+      { "value": "painting", "label": "🎨 Painting / Refreshing" }
     ],
-    "budgets": [
-      { "value": "5k-10k", "label": "$5,000 - $10,000" },
-      { "value": "10k-25k", "label": "$10,000 - $25,000" },
-      { "value": "25k-50k", "label": "$25,000 - $50,000" },
-      { "value": "50k+", "label": "$50,000+" },
-      { "value": "discuss", "label": "Let’s discuss" }
+    "type": [
+      { "value": "apartment", "label": "Apartment" },
+      { "value": "house", "label": "House" },
+      { "value": "land", "label": "Land" },
+      { "value": "commercial", "label": "Commercial space" }
     ],
     "timelines": [
       { "value": "asap", "label": "As soon as possible" },
@@ -84,8 +83,7 @@
     "items": [
       "Guaranteed response within 24 hours",
       "Free initial consultation",
-      "Personalized solutions",
-      "Support from a team of experts"
+      "Personalized solutions"
     ]
   }
 }
