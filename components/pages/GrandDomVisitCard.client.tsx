@@ -264,16 +264,17 @@ export default function GrandDomVisitCard({ messages }: { messages: any }) {
       </div>
 
       {/* Hero Section with Property Background */}
-      <section className="min-h-screen flex items-center justify-center p-4 relative">
+      <section
+        className="min-h-screen flex items-center justify-center p-4 relative"
+        style={{
+          backgroundImage: "url('/photo_2025-10-09_22-28-44.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          {/* <Image
-            src="/hero-property.jpg"
-            alt="Elegant property interior"
-            fill
-            className="object-cover opacity-20"
-            priority
-          /> */}
           <div className="absolute inset-0 bg-gradient-to-br from-green-100/80 via-emerald-100/80 to-teal-100/80" />
         </div>
 
@@ -703,7 +704,7 @@ export default function GrandDomVisitCard({ messages }: { messages: any }) {
 
       {/* Spanish Investment Highlight */}
       <section className="py-20 px-4 bg-gradient-to-r from-orange-100 to-yellow-100">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center opacity-50">
           <Card className="bg-white/80 border-orange-200 shadow-xl">
             <CardContent className="p-8">
               <div className="flex items-center justify-center gap-3 mb-6">
