@@ -84,7 +84,7 @@ export default function ContactPage({ messages }: ContactPageProps) {
     const regex = new RegExp(`^/(${langCodes.join("|")})`);
 
     const newPath = pathname?.replace(regex, `/${langCode}`) || `/${langCode}`;
-    router.push(newPath);
+    router.push(newPath, { scroll: false });
     setShowLanguages(false);
   };
   // close dropdown on outside click or Escape
@@ -262,7 +262,11 @@ export default function ContactPage({ messages }: ContactPageProps) {
             </h2>
             <p className="text-gray-600 mb-6">{submitSuccessText}</p>
             <Button
-              onClick={() => router.push(get(["links", "home"], "/"))}
+              onClick={() =>
+                router.push(`/${currentLanguage.code}/`, {
+                  scroll: false,
+                })
+              }
               className="w-full bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white"
             >
               {backToHome}
@@ -364,13 +368,24 @@ export default function ContactPage({ messages }: ContactPageProps) {
                 className="object-contain"
               />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+            <span
+              onClick={() =>
+                router.push(`/${currentLanguage.code}/`, {
+                  scroll: false,
+                })
+              }
+              className="text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent cursor-pointer"
+            >
               {brandName}
             </span>
           </div>
           <Button
             variant="outline"
-            onClick={() => router.push(get(["links", "home"], "/"))}
+            onClick={() =>
+              router.push(`/${currentLanguage.code}/`, {
+                scroll: false,
+              })
+            }
             className="border-green-300 text-green-700 hover:bg-green-50"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />

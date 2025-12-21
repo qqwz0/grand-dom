@@ -94,7 +94,7 @@ export default function GrandDomVisitCard({ messages }: { messages: any }) {
     const regex = new RegExp(`^/(${langCodes.join("|")})`);
 
     const newPath = pathname?.replace(regex, `/${langCode}`) || `/${langCode}`;
-    router.push(newPath);
+    router.push(newPath, { scroll: false });
     setShowLanguages(false);
   };
 
@@ -311,27 +311,6 @@ export default function GrandDomVisitCard({ messages }: { messages: any }) {
 
                     <p className="text-gray-700 leading-relaxed">{heroText}</p>
                   </div>
-
-                  {/* Services */}
-                  <div className="space-y-3">
-                    <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
-                      <Sparkles className="h-5 w-5 text-green-500" />
-                      {get(["services", "title"]) ??
-                        get(["specialization", "title"]) ??
-                        "Nasza Specjalizacja"}
-                    </h3>
-                    <div className="flex flex-wrap gap-2">
-                      {servicesList.map((service: string) => (
-                        <Badge
-                          key={service}
-                          variant="outline"
-                          className="border-green-300 text-green-700 hover:bg-green-50 transition-colors"
-                        >
-                          {service}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
                 </div>
 
                 {/* Right Side - Contact Info */}
@@ -465,7 +444,9 @@ export default function GrandDomVisitCard({ messages }: { messages: any }) {
                   {/* CTA Button */}
                   <Button
                     onClick={() =>
-                      router.push(`/${currentLanguage.code}/contact`)
+                      router.push(`/${currentLanguage.code}/contact`, {
+                        scroll: false,
+                      })
                     }
                     className="w-full bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white font-semibold py-3 transition-all duration-300 transform hover:scale-105"
                   >
@@ -497,35 +478,57 @@ export default function GrandDomVisitCard({ messages }: { messages: any }) {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="space-y-6">
             {realEstateServices.map((service: any) => {
               const Icon = service.icon ?? Building2;
               return (
                 <Card
                   key={service.title}
-                  className="bg-white/60 border-green-200 backdrop-blur-sm hover:bg-white/80 transition-all duration-300 group"
+                  className="p-0 bg-white/60 border-green-200 backdrop-blur-sm hover:bg-white hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 group overflow-hidden"
+                  onClick={() =>
+                    router.push(`/${currentLanguage.code}/contact`, {
+                      scroll: false,
+                    })
+                  }
                 >
-                  <CardContent className="p-6">
-                    <div className="p-3 bg-gradient-to-r from-green-500 to-teal-500 rounded-lg w-fit mb-4 group-hover:scale-110 transition-transform">
-                      <Icon className="h-6 w-6 text-white" />
+                  <CardContent className="p-0">
+                    <div className="flex flex-col md:flex-row items-stretch">
+                      {/* Icon Section */}
+                      <div className="md:w-48 bg-gradient-to-br from-green-500 to-teal-500 p-8 flex items-center justify-center group-hover:from-green-600 group-hover:to-teal-600 transition-all duration-300">
+                        <div className="p-4 bg-white/20 rounded-2xl backdrop-blur-sm group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                          <Icon className="h-12 w-12 text-white" />
+                        </div>
+                      </div>
+
+                      {/* Content Section */}
+                      <div className="flex-1 p-6 md:p-8 flex flex-col justify-center">
+                        <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-green-600 transition-colors">
+                          {service.title}
+                        </h3>
+                        <p className="text-gray-600 mb-4 leading-relaxed">
+                          {service.description}
+                        </p>
+
+                        {service.features && service.features.length > 0 && (
+                          <div className="flex flex-wrap gap-3">
+                            {service.features.map((feature: any, i: any) => (
+                              <div
+                                key={i}
+                                className="flex items-center gap-2 px-3 py-1.5 bg-green-50 rounded-full text-sm text-gray-700 group-hover:bg-green-100 transition-colors"
+                              >
+                                <div className="w-1.5 h-1.5 bg-green-500 rounded-full" />
+                                {feature}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Arrow indicator */}
+                      <div className="hidden md:flex items-center justify-center w-16 bg-gradient-to-l from-green-50 to-transparent group-hover:from-green-100 transition-colors">
+                        <ArrowRight className="h-6 w-6 text-green-500 group-hover:translate-x-1 transition-transform" />
+                      </div>
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4 leading-relaxed">
-                      {service.description}
-                    </p>
-                    <ul className="space-y-2">
-                      {service.features?.map((feature: string) => (
-                        <li
-                          key={feature}
-                          className="flex items-center gap-2 text-sm text-gray-600"
-                        >
-                          <div className="w-1.5 h-1.5 bg-green-500 rounded-full" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
                   </CardContent>
                 </Card>
               );
@@ -557,12 +560,12 @@ export default function GrandDomVisitCard({ messages }: { messages: any }) {
 
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="relative h-96 rounded-lg overflow-hidden shadow-xl">
-              {/* <Image
-                src="/hero-property.jpg"
+              <Image
+                src="/photo_2025-12-21_18-18-44.jpg"
                 alt="Eleganckie wnętrze nieruchomości"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-500"
-              /> */}
+              />
             </div>
             <div className="space-y-6">
               <h3 className="text-2xl font-bold text-gray-800">
@@ -599,7 +602,11 @@ export default function GrandDomVisitCard({ messages }: { messages: any }) {
                 )}
               </div>
               <Button
-                onClick={() => router.push(`/${currentLanguage.code}/contact`)}
+                onClick={() =>
+                  router.push(`/${currentLanguage.code}/contact`, {
+                    scroll: false,
+                  })
+                }
                 className="w-full bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white font-semibold py-3"
               >
                 {ctaViewProperties}
@@ -612,7 +619,7 @@ export default function GrandDomVisitCard({ messages }: { messages: any }) {
 
       {/* Spanish Investment Highlight */}
       <section className="py-20 px-4 bg-gradient-to-r from-orange-100 to-yellow-100">
-        <div className="max-w-4xl mx-auto text-center opacity-50">
+        <div className="max-w-4xl mx-auto text-center">
           <Card className="bg-white/80 border-orange-200 shadow-xl">
             <CardContent className="p-8">
               <div className="flex items-center justify-center gap-3 mb-6">
@@ -663,7 +670,11 @@ export default function GrandDomVisitCard({ messages }: { messages: any }) {
                 </div>
               </div>
               <Button
-                onClick={() => router.push(`/${currentLanguage.code}/contact`)}
+                onClick={() =>
+                  router.push(`/${currentLanguage.code}/contact`, {
+                    scroll: false,
+                  })
+                }
                 className="mt-6 bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-semibold px-8 py-3"
               >
                 {ctaLearnSpain}
