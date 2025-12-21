@@ -432,7 +432,7 @@ export default function GrandDomVisitCard({ messages }: { messages: any }) {
                           <Button
                             size="sm"
                             variant="outline"
-                            className="border-gray-300 text-gray-700 hover:text-white transition-colors"
+                            className="border-gray-300 text-gray-700 hover:bg-gradient-to-tr hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 hover:text-white hover:border-transparent transition-all duration-300"
                           >
                             <Icon className="h-4 w-4" />
                           </Button>
