@@ -245,23 +245,19 @@ export default function ContactPage({ messages }: ContactPageProps) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-100 via-emerald-100 to-teal-100">
-      {/* Language Switcher - Fixed Position */}
-      <LanguageSwitcher
-        showLanguages={showLanguages}
-        setShowLanguages={setShowLanguages}
-        languages={languages}
-        currentLanguage={currentLanguage}
-        switchLanguage={(code) => {
-          switchLanguage(code);
-          setShowLanguages(false);
-        }}
-      />
       {/* Header */}
       <Header
         brandName={brandName}
         currentLanguage={currentLanguage}
         router={router}
         get={get}
+        showLanguages={showLanguages}
+        setShowLanguages={setShowLanguages}
+        languages={languages}
+        switchLanguage={(code: any) => {
+          switchLanguage(code);
+          setShowLanguages(false);
+        }}
       />
 
       <div className="py-12 px-4">
@@ -295,9 +291,6 @@ export default function ContactPage({ messages }: ContactPageProps) {
             {/* Contact Info Sidebar */}
             <ContactInfoSidebar
               get={get}
-              copiedEmail={copied === "email"}
-              copiedPhone={copied === "phone"}
-              copyToClipboard={copyToClipboard}
               sidebarEmail={sidebarEmail}
               sidebarPhone={sidebarPhone}
               sidebarLocation={sidebarLocation}

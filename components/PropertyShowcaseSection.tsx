@@ -79,7 +79,7 @@ export default function PropertyShowcaseSection({
                   scroll: false,
                 })
               }
-              className="w-full bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white font-semibold py-3"
+              className="w-full bg-gradient-to-r cursor-pointer from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white font-semibold py-3"
             >
               {ctaViewProperties}
               <ArrowRight className="ml-2 h-4 w-4" />

@@ -1,16 +1,13 @@
 import React from "react";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle, Mail, Phone, MapPin, Copy, Check } from "lucide-react";
+import { CheckCircle, Mail, Phone, MapPin } from "lucide-react";
+import CopyButton from "./ui/copy-button";
 
 export default function ContactInfoSidebar({
   get,
   sidebarEmail,
   sidebarPhone,
   sidebarLocation,
-  copyToClipboard,
-  copiedEmail,
-  copiedPhone,
 }: any) {
   return (
     <div className="space-y-6">
@@ -36,18 +33,7 @@ export default function ContactInfoSidebar({
               </div>
             </div>
 
-            <Button
-              size="sm"
-              variant="ghost"
-              className="opacity-0 group-hover:opacity-100 transition-opacity text-green-400 hover:text-green-300"
-              onClick={() => copyToClipboard(sidebarEmail, "email")}
-            >
-              {copiedEmail ? (
-                <Check className="h-4 w-4" />
-              ) : (
-                <Copy className="h-4 w-4" />
-              )}
-            </Button>
+            <CopyButton contact={sidebarEmail} type={"email"} />
           </div>
 
           {/* PHONE */}
@@ -64,18 +50,7 @@ export default function ContactInfoSidebar({
               </div>
             </div>
 
-            <Button
-              size="sm"
-              variant="ghost"
-              className="opacity-0 group-hover:opacity-100 transition-opacity text-teal-400 hover:text-teal-300"
-              onClick={() => copyToClipboard(sidebarPhone, "phone")}
-            >
-              {copiedPhone ? (
-                <Check className="h-4 w-4" />
-              ) : (
-                <Copy className="h-4 w-4" />
-              )}
-            </Button>
+            <CopyButton contact={sidebarPhone} type={"phone"} />
           </div>
 
           {/* LOCATION */}

@@ -5,14 +5,13 @@ import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import {
   ArrowRight,
-  Check,
-  Copy,
   Globe,
   Instagram,
   Mail,
   MapPin,
   Phone,
 } from "lucide-react";
+import CopyButton from "./ui/copy-button";
 
 export default function HeroSection({
   brandName,
@@ -24,9 +23,6 @@ export default function HeroSection({
   contactPhone,
   contactLocation,
   contactWebsite,
-  copiedEmail,
-  copiedPhone,
-  copyToClipboard,
   get,
   router,
   currentLanguage,
@@ -103,18 +99,7 @@ export default function HeroSection({
                           <p className="text-gray-800">{contactEmail}</p>
                         </div>
                       </div>
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        className="opacity-0 group-hover:opacity-100 transition-opacity text-green-400 hover:text-green-300"
-                        onClick={() => copyToClipboard(contactEmail, "email")}
-                      >
-                        {copiedEmail ? (
-                          <Check className="h-4 w-4" />
-                        ) : (
-                          <Copy className="h-4 w-4" />
-                        )}
-                      </Button>
+                      <CopyButton contact={contactEmail} type={"email"} />
                     </div>
 
                     {/* Phone */}
@@ -130,18 +115,7 @@ export default function HeroSection({
                           <p className="text-gray-800">{contactPhone}</p>
                         </div>
                       </div>
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        className="opacity-0 group-hover:opacity-100 transition-opacity text-teal-400 hover:text-teal-300"
-                        onClick={() => copyToClipboard(contactPhone, "phone")}
-                      >
-                        {copiedPhone ? (
-                          <Check className="h-4 w-4" />
-                        ) : (
-                          <Copy className="h-4 w-4" />
-                        )}
-                      </Button>
+                      <CopyButton contact={contactPhone} type={"phone"} />
                     </div>
 
                     {/* Location */}
@@ -198,7 +172,7 @@ export default function HeroSection({
                         <Button
                           size="sm"
                           variant="outline"
-                          className="border-gray-300 text-gray-700 hover:bg-gradient-to-tr hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 hover:text-white hover:border-transparent transition-all duration-300"
+                          className="border-gray-300 text-gray-700 hover:bg-gradient-to-tr hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 hover:text-white hover:border-transparent transition-all duration-900 cursor-pointer"
                         >
                           <Icon className="h-4 w-4" />
                         </Button>
@@ -212,7 +186,7 @@ export default function HeroSection({
                   onClick={() =>
                     router.push(`/${currentLanguage.code}/contact`, {})
                   }
-                  className="w-full bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white font-semibold py-3 transition-all duration-300 transform hover:scale-105"
+                  className="w-full bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white font-semibold py-3 transition-all duration-300 transform hover:scale-105 cursor-pointer"
                 >
                   {ctaStart}
                   <ArrowRight className="ml-2 h-4 w-4" />

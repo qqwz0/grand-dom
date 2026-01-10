@@ -67,7 +67,7 @@ export default function SpanishInvestmentSection({
                   scroll: false,
                 })
               }
-              className="mt-6 bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-semibold px-8 py-3"
+              className="mt-6 bg-gradient-to-r cursor-pointer from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-semibold px-8 py-3"
             >
               {ctaLearnSpain}
               <Sun className="ml-2 h-4 w-4" />

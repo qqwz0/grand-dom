@@ -88,16 +88,18 @@ export default function GrandDomVisitCard({ messages }: { messages: any }) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-100 via-emerald-100 to-teal-100">
       {/* Language Switcher - Fixed Position */}
-      <LanguageSwitcher
-        showLanguages={showLanguages}
-        setShowLanguages={setShowLanguages}
-        languages={languages}
-        currentLanguage={currentLanguage}
-        switchLanguage={(code) => {
-          switchLanguage(code);
-          setShowLanguages(false);
-        }}
-      />
+      <div className="fixed top-4 right-4 z-50">
+        <LanguageSwitcher
+          showLanguages={showLanguages}
+          setShowLanguages={setShowLanguages}
+          languages={languages}
+          currentLanguage={currentLanguage}
+          switchLanguage={(code) => {
+            switchLanguage(code);
+            setShowLanguages(false);
+          }}
+        />
+      </div>
 
       {/* Hero Section with Property Background */}
       <HeroSection
@@ -110,9 +112,6 @@ export default function GrandDomVisitCard({ messages }: { messages: any }) {
         contactPhone={contactPhone}
         contactLocation={contactLocation}
         contactWebsite={contactWebsite}
-        copiedEmail={copied === "email"}
-        copiedPhone={copied === "phone"}
-        copyToClipboard={copyToClipboard}
         get={get}
         router={router}
         currentLanguage={currentLanguage}
