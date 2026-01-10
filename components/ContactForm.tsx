@@ -101,7 +101,7 @@ export default function ContactForm({
                   required
                   onValueChange={(value) => handleInputChange("service", value)}
                 >
-                  <SelectTrigger className="border-green-200 focus:border-green-500 w-full w-full">
+                  <SelectTrigger className="border-green-200 focus:border-green-500 w-full">
                     <SelectValue
                       placeholder={get(
                         ["form", "servicePlaceholder"],

@@ -96,7 +96,7 @@ export default function ContactInfoSidebar({
       <Card className="bg-gradient-to-br from-green-500 to-teal-500 text-white border-0 shadow-xl">
         <CardContent className="p-6">
           <h3 className="text-lg font-semibold mb-3">
-            {get(["whyChoose", "title"], "Why Choose GrandDom?")}
+            {get(["whyChoose", "title"], "Why Choose GRAND DOM?")}
           </h3>
           <ul className="space-y-2 text-sm">
             {(

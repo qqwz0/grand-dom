@@ -11,7 +11,7 @@ export async function generatePageMetadata(
 ) {
   const commonMsgs = await getMessages(lng, "common");
 
-  const baseTitle = commonMsgs.seo?.title || "GrandDom";
+  const baseTitle = commonMsgs.seo?.title || "GRAND DOM";
   const title = customTitle ? `${customTitle} - ${baseTitle}` : baseTitle;
   const description =
     commonMsgs.seo?.description || "Excellence in Every Domain";

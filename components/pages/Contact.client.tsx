@@ -123,68 +123,74 @@ export default function ContactPage({ messages }: ContactPageProps) {
     }
   };
 
-  const brandName = get(["brand", "name"], "GrandDom");
+  const brandName = get(["brand", "name"], "GRAND DOM");
+
   const titleStart = get(
     ["contactPage", "title"],
-    get(["cta", "startProject"], "Start Your Project")
+    get(["cta", "startProject"], "Rozpocznij współpracę")
   );
+
   const subtitle = get(
     ["contactPage", "subtitle"],
-    "Tell us about your project and we'll get back to you with a customized solution."
+    "Opowiedz nam o swoich potrzebach, a wrócimy do Ciebie z dopasowaną ofertą."
   );
-  const backToHome = get(["ui", "backToHome"], "Back to Home");
+
+  const backToHome = get(["ui", "backToHome"], "Wróć na stronę główną");
 
   const sidebarEmail = get(
     ["contact", "email", "value"],
-    get(["contact", "email"], "contact@granddom.com")
-  );
-  const sidebarPhone = get(
-    ["contact", "phone", "value"],
-    get(["contact", "phone"], "+1 (555) 123-4567")
-  );
-  const sidebarLocation = get(
-    ["contact", "location", "value"],
-    get(["contact", "location"], "New York, NY")
+    get(["contact", "email"], "granddom7@op.pl")
   );
 
-  const submitSuccessTitle = get(["form", "successTitle"], "Thank You!");
+  const sidebarPhone = get(
+    ["contact", "phone", "value"],
+    get(["contact", "phone"], "886 193 598")
+  );
+
+  const sidebarLocation = get(
+    ["contact", "location", "value"],
+    get(["contact", "location"], "Warszawa, Polska")
+  );
+
+  const submitSuccessTitle = get(["form", "successTitle"], "Dziękujemy!");
   const submitSuccessText = get(
     ["form", "successText"],
-    "We've received your project details and will contact you within 24 hours to discuss your requirements."
+    "Otrzymaliśmy Twoje zgłoszenie i skontaktujemy się z Tobą w ciągu 24 godzin, aby omówić szczegóły."
   );
-  const sendBtn = get(["form", "send"], "Send Project Details");
+
+  const sendBtn = get(["form", "send"], "Wyślij zgłoszenie");
 
   const serviceOptions = get(
     ["contactPage", "services"],
     [
-      { value: "consulting", label: "Business Consulting" },
-      { value: "development", label: "Development" },
-      { value: "strategy", label: "Growth Strategy" },
-      { value: "digital", label: "Digital Transformation" },
-      { value: "ai", label: "AI Solutions" },
-      { value: "other", label: "Other" },
+      { value: "selling", label: "Sprzedaż nieruchomości" },
+      { value: "buying", label: "Zakup nieruchomości" },
+      { value: "renting", label: "Wynajem" },
+      { value: "investment", label: "Doradztwo inwestycyjne" },
+      { value: "legal", label: "Obsługa prawna" },
+      { value: "other", label: "Inne" },
     ]
   );
 
   const budgetOptions = get(
     ["contactPage", "type"],
     [
-      { value: "5k-10k", label: "$5,000 - $10,000" },
-      { value: "10k-25k", label: "$10,000 - $25,000" },
-      { value: "25k-50k", label: "$25,000 - $50,000" },
-      { value: "50k+", label: "$50,000+" },
-      { value: "discuss", label: "Let's Discuss" },
+      { value: "buying", label: "Zakup (widełki cenowe)" },
+      { value: "renting", label: "Wynajem (widełki miesięczne)" },
+      { value: "investment", label: "Inwestycja" },
+      { value: "consultation", label: "Konsultacja" },
+      { value: "discuss", label: "Do ustalenia" },
     ]
   );
 
   const timelineOptions = get(
     ["contactPage", "timelines"],
     [
-      { value: "asap", label: "ASAP" },
-      { value: "1month", label: "Within 1 month" },
-      { value: "3months", label: "Within 3 months" },
-      { value: "6months", label: "Within 6 months" },
-      { value: "flexible", label: "I'm flexible" },
+      { value: "asap", label: "Jak najszybciej" },
+      { value: "1week", label: "W ciągu 1 tygodnia" },
+      { value: "1month", label: "W ciągu 1 miesiąca" },
+      { value: "3months", label: "W ciągu 3 miesięcy" },
+      { value: "flexible", label: "Jestem elastyczny/a" },
     ]
   );
 

@@ -1,7 +1,7 @@
 export default function manifest() {
   return {
-    name: "GrandDom - Excellence in Every Domain",
-    short_name: "GrandDom",
+    name: "GRAND DOM - Excellence in Every Domain",
+    short_name: "GRAND DOM",
     description: "Twój Dom w Sercu Warszawy",
     start_url: "/",
     display: "standalone",
