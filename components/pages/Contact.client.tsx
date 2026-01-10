@@ -27,20 +27,43 @@ import {
   Check,
 } from "lucide-react";
 import Image from "next/image";
+import LanguageSwitcher from "../LanguageSwitcher";
+import Header from "../Header";
+import Contact from "@/app/[lng]/contact/page";
+import ContactForm from "../ContactForm";
+import ContactInfoSidebar from "../ContactInfoSidebar";
+import { safeGet } from "@/lib/safeGet";
+import { useI18nSwitcher } from "@/hooks/useI18nSwitcher";
+import { useCopyToClipboard } from "@/hooks/useCopyToClipboard";
 
 interface ContactPageProps {
-  messages: any; // or create a proper type if you want strict typing
+  messages: any;
 }
 
 export default function ContactPage({ messages }: ContactPageProps) {
-  const router = useRouter();
-  const pathname = usePathname() || "/";
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+  const [showLanguages, setShowLanguages] = useState(false);
+
+  const languages = safeGet(
+    messages,
+    ["languages", "available"],
+    [
+      { code: "pl", name: "Polski", flag: "🇵🇱" },
+      { code: "ua", name: "Українська", flag: "🇺🇦" },
+      { code: "en", name: "English", flag: "🇬🇧" },
+    ]
+  );
+
+  const { currentLanguage, switchLanguage, router, pathname } =
+    useI18nSwitcher(languages);
+  const { copied, copyToClipboard } = useCopyToClipboard(2000);
+
+  const get = (path: string[], fallback?: any) =>
+    safeGet(messages, path, fallback);
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [copied, setCopied] = useState<null | "email" | "phone">(null);
-  const [showLanguages, setShowLanguages] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -53,41 +76,6 @@ export default function ContactPage({ messages }: ContactPageProps) {
     price: "",
   });
 
-  console.log(formData);
-
-  // Safe accessor
-  const get = (path: string[], fallback: any = undefined) =>
-    path.reduce(
-      (acc: any, k) => (acc && acc[k] !== undefined ? acc[k] : undefined),
-      messages
-    ) ?? fallback;
-
-  // Languages (from messages or fallback)
-  const languages = get(
-    ["languages", "available"],
-    [
-      { code: "pl", name: "Polski", flag: "🇵🇱" },
-      { code: "ua", name: "Українська", flag: "🇺🇦" },
-      { code: "en", name: "English", flag: "🇬🇧" },
-    ]
-  );
-
-  console.log(languages);
-
-  const currentLanguage =
-    languages.find((lang: any) => pathname?.includes(`/${lang.code}`)) ||
-    languages[0];
-
-  // preserve rest of the path when switching language
-  const switchLanguage = (langCode: string) => {
-    const langCodes = languages.map((lang: any) => lang.code);
-    const regex = new RegExp(`^/(${langCodes.join("|")})`);
-
-    const newPath = pathname?.replace(regex, `/${langCode}`) || `/${langCode}`;
-    router.push(newPath, { scroll: false });
-    setShowLanguages(false);
-  };
-  // close dropdown on outside click or Escape
   useEffect(() => {
     const onDocClick = (e: MouseEvent) => {
       if (
@@ -107,30 +95,6 @@ export default function ContactPage({ messages }: ContactPageProps) {
       document.removeEventListener("keydown", onKey);
     };
   }, []);
-
-  // clipboard helper with fallback
-  const copyToClipboard = async (text: string, type: "email" | "phone") => {
-    try {
-      if (!text) return;
-      if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(text);
-      } else {
-        const ta = document.createElement("textarea");
-        ta.value = text;
-        ta.setAttribute("readonly", "");
-        ta.style.position = "absolute";
-        ta.style.left = "-9999px";
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand("copy");
-        document.body.removeChild(ta);
-      }
-      setCopied(type);
-      setTimeout(() => setCopied((c) => (c === type ? null : c)), 2000);
-    } catch (err) {
-      console.error("Copy failed:", err);
-    }
-  };
 
   const handleInputChange = (field: string, value: string) =>
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -159,7 +123,6 @@ export default function ContactPage({ messages }: ContactPageProps) {
     }
   };
 
-  // localized strings with fallbacks
   const brandName = get(["brand", "name"], "GrandDom");
   const titleStart = get(
     ["contactPage", "title"],
@@ -171,7 +134,6 @@ export default function ContactPage({ messages }: ContactPageProps) {
   );
   const backToHome = get(["ui", "backToHome"], "Back to Home");
 
-  // contact sidebar fields
   const sidebarEmail = get(
     ["contact", "email", "value"],
     get(["contact", "email"], "contact@granddom.com")
@@ -192,7 +154,6 @@ export default function ContactPage({ messages }: ContactPageProps) {
   );
   const sendBtn = get(["form", "send"], "Send Project Details");
 
-  // select options (try to pull from messages; otherwise use sensible defaults)
   const serviceOptions = get(
     ["contactPage", "services"],
     [
@@ -248,7 +209,6 @@ export default function ContactPage({ messages }: ContactPageProps) {
     },
   });
 
-  // When submitted - localized thank-you screen
   if (isSubmitted) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-green-100 via-emerald-100 to-teal-100 flex items-center justify-center p-4">
@@ -280,119 +240,23 @@ export default function ContactPage({ messages }: ContactPageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-100 via-emerald-100 to-teal-100">
       {/* Language Switcher - Fixed Position */}
-      <div className="fixed top-4 right-4 z-50">
-        <div className="relative" ref={dropdownRef}>
-          <Button
-            variant="outline"
-            size="sm"
-            className="bg-white/90 backdrop-blur-sm border-green-200 text-gray-700 hover:bg-white hover:border-green-300 transition-all duration-200 shadow-lg"
-            onClick={() => setShowLanguages((s) => !s)}
-            aria-expanded={showLanguages}
-            aria-haspopup="menu"
-          >
-            <Languages className="h-4 w-4 mr-2" />
-            <span className="mr-1">
-              {currentLanguage.flag ?? currentLanguage.code}
-            </span>
-            <span className="mr-1">{currentLanguage.name}</span>
-            <ChevronDown
-              className={`h-3 w-3 transition-transform ${
-                showLanguages ? "rotate-180" : ""
-              }`}
-            />
-          </Button>
-          {showLanguages && (
-            <Card className="absolute top-full mt-2 right-0 w-48 bg-white/95 backdrop-blur-sm border-green-200 shadow-xl">
-              <CardContent className="p-2">
-                {languages.map((language: any) => (
-                  <Button
-                    key={language.code}
-                    variant={
-                      currentLanguage.code === language.code
-                        ? "default"
-                        : "ghost"
-                    }
-                    size="sm"
-                    className={`w-full justify-start mb-1 last:mb-0 transition-colors ${
-                      currentLanguage.code === language.code
-                        ? "bg-green-500 text-white hover:bg-green-600"
-                        : "text-gray-700 hover:bg-green-50"
-                    }`}
-                    onClick={() => switchLanguage(language.code)}
-                  >
-                    <span className="mr-3 text-lg">{language.flag}</span>
-                    {language.name}
-                  </Button>
-                ))}
-              </CardContent>
-            </Card>
-          )}
-          {showLanguages && (
-            <Card className="absolute top-full mt-2 right-0 w-48 bg-white/95 backdrop-blur-sm border-green-200 shadow-xl">
-              <CardContent className="p-2">
-                {languages.map((language: any) => (
-                  <Button
-                    key={language.code}
-                    variant={
-                      currentLanguage.code === language.code
-                        ? "default"
-                        : "ghost"
-                    }
-                    size="sm"
-                    className={`w-full justify-start mb-1 last:mb-0 transition-colors ${
-                      currentLanguage.code === language.code
-                        ? "bg-green-500 text-white hover:bg-green-600"
-                        : "text-gray-700 hover:bg-green-50"
-                    }`}
-                    onClick={() => switchLanguage(language.code)}
-                  >
-                    <span className="mr-3 text-lg">{language.flag}</span>
-                    {language.name}
-                  </Button>
-                ))}
-              </CardContent>
-            </Card>
-          )}
-        </div>
-      </div>
-
+      <LanguageSwitcher
+        showLanguages={showLanguages}
+        setShowLanguages={setShowLanguages}
+        languages={languages}
+        currentLanguage={currentLanguage}
+        switchLanguage={(code) => {
+          switchLanguage(code);
+          setShowLanguages(false);
+        }}
+      />
       {/* Header */}
-      <header className="p-6 border-b border-green-200 bg-white/50 backdrop-blur-sm">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="relative w-8 h-8">
-              <Image
-                src="/logo.png"
-                alt={`${brandName} Logo`}
-                fill
-                className="object-contain"
-              />
-            </div>
-            <span
-              onClick={() =>
-                router.push(`/${currentLanguage.code}/`, {
-                  scroll: false,
-                })
-              }
-              className="text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent cursor-pointer"
-            >
-              {brandName}
-            </span>
-          </div>
-          <Button
-            variant="outline"
-            onClick={() =>
-              router.push(`/${currentLanguage.code}/`, {
-                scroll: false,
-              })
-            }
-            className="border-green-300 text-green-700 hover:bg-green-50"
-          >
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            {get(["ui", "backToHome"], "Back to Home")}
-          </Button>
-        </div>
-      </header>
+      <Header
+        brandName={brandName}
+        currentLanguage={currentLanguage}
+        router={router}
+        get={get}
+      />
 
       <div className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
@@ -407,348 +271,31 @@ export default function ContactPage({ messages }: ContactPageProps) {
 
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Contact Form */}
-            <div className="lg:col-span-2">
-              <Card className="bg-white/70 border-green-200 shadow-xl">
-                <CardHeader>
-                  <CardTitle className="text-2xl text-gray-800">
-                    {get(["form", "title"], "Project Details")}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <form
-                    onSubmit={handleSubmit}
-                    className="space-y-6"
-                    aria-label={get(
-                      ["form", "ariaLabel"],
-                      "Project details form"
-                    )}
-                  >
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="name" className="text-gray-700">
-                          {get(["form", "nameLabel"], "Full Name *")}
-                        </Label>
-                        <Input
-                          id="name"
-                          required
-                          value={formData.name}
-                          onChange={(e) =>
-                            handleInputChange("name", e.target.value)
-                          }
-                          className="border-green-200 focus:border-green-500 w-full"
-                          placeholder={get(
-                            ["form", "namePlaceholder"],
-                            "John Doe"
-                          )}
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="email" className="text-gray-700">
-                          {get(["form", "emailLabel"], "Email Address *")}
-                        </Label>
-                        <Input
-                          id="email"
-                          type="email"
-                          required
-                          value={formData.email}
-                          onChange={(e) =>
-                            handleInputChange("email", e.target.value)
-                          }
-                          className="border-green-200 focus:border-green-500 w-full"
-                          placeholder={get(
-                            ["form", "emailPlaceholder"],
-                            "john@example.com"
-                          )}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="phone" className="text-gray-700">
-                          {get(["form", "phoneLabel"], "Phone Number")}
-                        </Label>
-                        <Input
-                          id="phone"
-                          type="tel"
-                          value={formData.phone}
-                          onChange={(e) =>
-                            handleInputChange("phone", e.target.value)
-                          }
-                          className="border-green-200 focus:border-green-500 w-full"
-                          placeholder={get(
-                            ["form", "phonePlaceholder"],
-                            "+1 (555) 123-4567"
-                          )}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="service" className="text-gray-700">
-                          {get(["form", "serviceLabel"], "Service Needed *")}
-                        </Label>
-                        <Select
-                          required
-                          onValueChange={(value) =>
-                            handleInputChange("service", value)
-                          }
-                        >
-                          <SelectTrigger className="border-green-200 focus:border-green-500 w-full w-full">
-                            <SelectValue
-                              placeholder={get(
-                                ["form", "servicePlaceholder"],
-                                "Select a service"
-                              )}
-                            />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {serviceOptions.map((o: any) => (
-                              <SelectItem key={o.value} value={o.value}>
-                                {o.label}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="type" className="text-gray-700">
-                          {get(["form", "budgetLabel"], "Property Type")}
-                        </Label>
-                        <Select
-                          onValueChange={(value) =>
-                            handleInputChange("type", value)
-                          }
-                        >
-                          <SelectTrigger className="border-green-200 focus:border-green-500 w-full">
-                            <SelectValue
-                              placeholder={get(
-                                ["form", "budgetPlaceholder"],
-                                "Select property type"
-                              )}
-                            />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {budgetOptions.map((b: any) => (
-                              <SelectItem key={b.value} value={b.value}>
-                                {b.label}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-4">
-                      {(formData.service === "buying" ||
-                        formData.service === "renting") && (
-                        <div className="space-y-2">
-                          <Label htmlFor="price" className="text-gray-700">
-                            {
-                              get(["form", "priceLabel"], {
-                                en: "Price Range (zł)",
-                                ua: "Діапазон цін (zł)",
-                                pl: "Zakres cenowy (zł)",
-                              })[currentLanguage.code]
-                            }
-                          </Label>
-                          <div className="flex gap-2">
-                            <Input
-                              id="price"
-                              type="text"
-                              onChange={(e) =>
-                                handleInputChange("price", e.target.value)
-                              }
-                              className="border-green-200 focus:border-green-500 w-full"
-                              placeholder={
-                                pricePlaceholders[currentLanguage.code][
-                                  formData.service
-                                ]
-                              }
-                            />
-                          </div>
-                          <p className="text-xs text-gray-500">
-                            {
-                              priceHelperText[currentLanguage.code][
-                                formData.service
-                              ]
-                            }
-                          </p>
-                        </div>
-                      )}
-                      <div className="space-y-2">
-                        <Label htmlFor="timeline" className="text-gray-700">
-                          {get(["form", "timelineLabel"], "Project Timeline")}
-                        </Label>
-                        <Select
-                          onValueChange={(value) =>
-                            handleInputChange("timeline", value)
-                          }
-                        >
-                          <SelectTrigger className="border-green-200 focus:border-green-500 w-full">
-                            <SelectValue
-                              placeholder={get(
-                                ["form", "timelinePlaceholder"],
-                                "When do you need this completed?"
-                              )}
-                            />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {timelineOptions.map((t: any) => (
-                              <SelectItem key={t.value} value={t.value}>
-                                {t.label}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="message" className="text-gray-700">
-                        {get(["form", "messageLabel"], "Project Description *")}
-                      </Label>
-                      <Textarea
-                        id="message"
-                        required
-                        value={formData.message}
-                        onChange={(e) =>
-                          handleInputChange("message", e.target.value)
-                        }
-                        className="border-green-200 focus:border-green-500 w-full min-h-[120px]"
-                        placeholder={get(
-                          ["form", "messagePlaceholder"],
-                          "Tell us about your project, goals, and any specific requirements..."
-                        )}
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      disabled={isLoading}
-                      className="w-full bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white font-semibold py-3 transition-all duration-300"
-                    >
-                      {isLoading ? (
-                        <>
-                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2" />
-                          {get(["form", "submittingText"], "Submitting...")}
-                        </>
-                      ) : (
-                        <>
-                          {sendBtn} <Send className="ml-2 h-4 w-4" />
-                        </>
-                      )}
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </div>
+            <ContactForm
+              get={get}
+              handleSubmit={handleSubmit}
+              handleInputChange={handleInputChange}
+              formData={formData}
+              isLoading={isLoading}
+              serviceOptions={serviceOptions}
+              budgetOptions={budgetOptions}
+              timelineOptions={timelineOptions}
+              pricePlaceholders={pricePlaceholders}
+              priceHelperText={priceHelperText}
+              currentLanguage={currentLanguage}
+              sendBtn={sendBtn}
+            />
 
             {/* Contact Info Sidebar */}
-            <div className="space-y-6">
-              <Card className="bg-white/70 border-green-200 shadow-xl">
-                <CardHeader>
-                  <CardTitle className="text-xl text-gray-800">
-                    {get(["contact", "getInTouch"], "Get In Touch")}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 bg-green-100 rounded-lg">
-                        <Mail className="h-5 w-5 text-green-600" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-gray-500">
-                          {get(["contact", "email", "label"], "Email")}
-                        </p>
-                        <p className="text-gray-800">{sidebarEmail}</p>
-                      </div>
-                    </div>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      onClick={() => copyToClipboard(sidebarEmail, "email")}
-                    >
-                      {copied === "email" ? (
-                        <Check className="h-4 w-4 text-green-600" />
-                      ) : (
-                        <Copy className="h-4 w-4" />
-                      )}
-                    </Button>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 bg-teal-100 rounded-lg">
-                        <Phone className="h-5 w-5 text-teal-600" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-gray-500">
-                          {get(["contact", "phone", "label"], "Phone")}
-                        </p>
-                        <p className="text-gray-800">{sidebarPhone}</p>
-                      </div>
-                    </div>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      onClick={() => copyToClipboard(sidebarPhone, "phone")}
-                    >
-                      {copied === "phone" ? (
-                        <Check className="h-4 w-4 text-green-600" />
-                      ) : (
-                        <Copy className="h-4 w-4" />
-                      )}
-                    </Button>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-emerald-100 rounded-lg">
-                      <MapPin className="h-5 w-5 text-emerald-600" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-500">
-                        {get(["contact", "location", "label"], "Location")}
-                      </p>
-                      <p className="text-gray-800">{sidebarLocation}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-gradient-to-br from-green-500 to-teal-500 text-white border-0 shadow-xl">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold mb-3">
-                    {get(["whyChoose", "title"], "Why Choose GrandDom?")}
-                  </h3>
-                  <ul className="space-y-2 text-sm">
-                    {(
-                      get(
-                        ["whyChoose", "items"],
-                        [
-                          get(
-                            ["ui", "fastResponse"],
-                            "24-hour response guarantee"
-                          ),
-                          get(
-                            ["ui", "freeConsult"],
-                            "Free initial consultation"
-                          ),
-                          get(["ui", "custom"], "Customized solutions"),
-                          get(["ui", "expert"], "Expert team support"),
-                        ]
-                      ) as string[]
-                    ).map((it: string, i: number) => (
-                      <li key={i} className="flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4" />
-                        {it}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
+            <ContactInfoSidebar
+              get={get}
+              copiedEmail={copied === "email"}
+              copiedPhone={copied === "phone"}
+              copyToClipboard={copyToClipboard}
+              sidebarEmail={sidebarEmail}
+              sidebarPhone={sidebarPhone}
+              sidebarLocation={sidebarLocation}
+            />
           </div>
         </div>
       </div>

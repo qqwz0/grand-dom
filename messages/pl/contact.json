@@ -1,5 +1,5 @@
 {
-  "brand": { "name": "GrandDom" },
+  "brand": { "name": "GRAND DOM" },
   "links": { "home": "/" },
   "languages": {
     "available": [
@@ -9,7 +9,7 @@
     ]
   },
   "ui": {
-    "backToHome": "Powrót do strony głównej",
+    "backToHome": "Powrót",
     "fastResponse": "Gwarancja odpowiedzi w 24 godziny",
     "freeConsult": "Bezpłatna konsultacja wstępna",
     "custom": "Spersonalizowane rozwiązania",
