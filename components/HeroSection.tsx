@@ -12,6 +12,7 @@ import {
   Phone,
 } from "lucide-react";
 import CopyButton from "./ui/copy-button";
+import { motion } from "framer-motion";
 
 export default function HeroSection({
   brandName,
@@ -60,7 +61,7 @@ export default function HeroSection({
                         className="object-contain"
                       />
                     </div>
-                    <Badge className="bg-green-100 text-green-700 border-green-300">
+                    <Badge className="border-0 bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-800 shadow-sm">
                       {badgeText}
                     </Badge>
                   </div>

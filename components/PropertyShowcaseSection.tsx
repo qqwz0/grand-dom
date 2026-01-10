@@ -1,7 +1,10 @@
+"use client";
+
 import React from "react";
 import { Button } from "./ui/button";
 import { ArrowRight, Building2 } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function PropertyShowcaseSection({
   get,
@@ -12,7 +15,13 @@ export default function PropertyShowcaseSection({
   return (
     <section className="py-20 px-4 bg-white/50">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center mb-16"
+        >
           <div className="flex items-center justify-center gap-3 mb-4">
             <Building2 className="h-8 w-8 text-green-500" />
             <h2 className="text-4xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
@@ -28,42 +37,61 @@ export default function PropertyShowcaseSection({
               "Odkryj wyjątkowe nieruchomości..."
             )}
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div className="relative h-96 rounded-lg overflow-hidden shadow-xl">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="relative h-96 rounded-lg overflow-hidden shadow-xl"
+          >
             <Image
               src="/photo_2025-12-21_18-18-44.jpg"
-              alt="Eleganckie wnętrze nieruchomości"
+              alt={get(
+                ["propertyShowcase", "imageAlt"],
+                "Eleganckie wnętrze nieruchomości"
+              )}
               fill
               className="object-cover hover:scale-105 transition-transform duration-500"
             />
-          </div>
-          <div className="space-y-6">
+          </motion.div>
+
+          {/* Content (slide from right) */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="space-y-6"
+          >
             <h3 className="text-2xl font-bold text-gray-800">
               {get(
                 ["propertyShowcase", "title"],
                 "Eleganckie Wnętrza, Wyjątkowa Jakość"
               )}
             </h3>
+
             <p className="text-gray-600 leading-relaxed">
               {get(
                 ["propertyShowcase", "description"],
                 "Nasze nieruchomości charakteryzują się najwyższą jakością..."
               )}
             </p>
+
             <div className="grid grid-cols-2 gap-4">
               {(get(["propertyShowcase", "featureStats"], []) as any[]).map(
                 (s, i) => (
                   <div
                     key={i}
                     className={`text-center p-4 ${
-                      i === 0 ? "bg-green-50" : "bg-teal-50"
+                      i % 2 === 0 ? "bg-green-50" : "bg-teal-50"
                     } rounded-lg`}
                   >
                     <div
                       className={`text-2xl font-bold ${
-                        i === 0 ? "text-green-600" : "text-teal-600"
+                        i % 2 === 0 ? "text-green-600" : "text-teal-600"
                       }`}
                     >
                       {s.value}
@@ -73,6 +101,7 @@ export default function PropertyShowcaseSection({
                 )
               )}
             </div>
+
             <Button
               onClick={() =>
                 router.push(`/${currentLanguage.code}/contact`, {
@@ -84,7 +113,7 @@ export default function PropertyShowcaseSection({
               {ctaViewProperties}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

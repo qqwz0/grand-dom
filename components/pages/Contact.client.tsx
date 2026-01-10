@@ -1,40 +1,16 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { useRouter, usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
-  ArrowLeft,
-  Send,
-  CheckCircle,
-  Mail,
-  Phone,
-  MapPin,
-  Languages,
-  ChevronDown,
-  Copy,
-  Check,
-} from "lucide-react";
-import Image from "next/image";
-import LanguageSwitcher from "../LanguageSwitcher";
+import { Card, CardContent } from "@/components/ui/card";
+import { CheckCircle } from "lucide-react";
 import Header from "../Header";
-import Contact from "@/app/[lng]/contact/page";
 import ContactForm from "../ContactForm";
 import ContactInfoSidebar from "../ContactInfoSidebar";
 import { safeGet } from "@/lib/safeGet";
 import { useI18nSwitcher } from "@/hooks/useI18nSwitcher";
 import { useCopyToClipboard } from "@/hooks/useCopyToClipboard";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface ContactPageProps {
   messages: any;
@@ -55,7 +31,7 @@ export default function ContactPage({ messages }: ContactPageProps) {
     ]
   );
 
-  const { currentLanguage, switchLanguage, router, pathname } =
+  const { currentLanguage, switchLanguage, router } =
     useI18nSwitcher(languages);
   const { copied, copyToClipboard } = useCopyToClipboard(2000);
 
@@ -110,11 +86,8 @@ export default function ContactPage({ messages }: ContactPageProps) {
         body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
-        setIsSubmitted(true);
-      } else {
-        alert("Something went wrong. Please try again!");
-      }
+      if (response.ok) setIsSubmitted(true);
+      else alert("Something went wrong. Please try again!");
     } catch (err) {
       console.error(err);
       alert("Submission failed. Please try again.");
@@ -141,12 +114,10 @@ export default function ContactPage({ messages }: ContactPageProps) {
     ["contact", "email", "value"],
     get(["contact", "email"], "granddom7@op.pl")
   );
-
   const sidebarPhone = get(
     ["contact", "phone", "value"],
     get(["contact", "phone"], "886 193 598")
   );
-
   const sidebarLocation = get(
     ["contact", "location", "value"],
     get(["contact", "location"], "Warszawa, Polska")
@@ -218,34 +189,37 @@ export default function ContactPage({ messages }: ContactPageProps) {
   if (isSubmitted) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-green-100 via-emerald-100 to-teal-100 flex items-center justify-center p-4">
-        <Card className="w-full max-w-md bg-white/80 border-green-200 shadow-2xl">
-          <CardContent className="p-8 text-center">
-            <div className="p-4 bg-green-100 rounded-full w-fit mx-auto mb-6">
-              <CheckCircle className="h-12 w-12 text-green-600" />
-            </div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              {submitSuccessTitle}
-            </h2>
-            <p className="text-gray-600 mb-6">{submitSuccessText}</p>
-            <Button
-              onClick={() =>
-                router.push(`/${currentLanguage.code}/`, {
-                  scroll: false,
-                })
-              }
-              className="w-full bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white"
-            >
-              {backToHome}
-            </Button>
-          </CardContent>
-        </Card>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+        >
+          <Card className="w-full max-w-md bg-white/80 border-green-200 shadow-2xl">
+            <CardContent className="p-8 text-center">
+              <div className="p-4 bg-green-100 rounded-full w-fit mx-auto mb-6">
+                <CheckCircle className="h-12 w-12 text-green-600" />
+              </div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">
+                {submitSuccessTitle}
+              </h2>
+              <p className="text-gray-600 mb-6">{submitSuccessText}</p>
+              <Button
+                onClick={() =>
+                  router.push(`/${currentLanguage.code}/`, { scroll: false })
+                }
+                className="w-full bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white"
+              >
+                {backToHome}
+              </Button>
+            </CardContent>
+          </Card>
+        </motion.div>
       </div>
     );
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-100 via-emerald-100 to-teal-100">
-      {/* Header */}
+      {/* Header (kept as-is) */}
       <Header
         brandName={brandName}
         currentLanguage={currentLanguage}
@@ -262,39 +236,59 @@ export default function ContactPage({ messages }: ContactPageProps) {
 
       <div className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center mb-12"
+          >
             <h1 className="text-4xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-4">
               {titleStart}
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               {subtitle}
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid lg:grid-cols-3 gap-8">
-            {/* Contact Form */}
-            <ContactForm
-              get={get}
-              handleSubmit={handleSubmit}
-              handleInputChange={handleInputChange}
-              formData={formData}
-              isLoading={isLoading}
-              serviceOptions={serviceOptions}
-              budgetOptions={budgetOptions}
-              timelineOptions={timelineOptions}
-              pricePlaceholders={pricePlaceholders}
-              priceHelperText={priceHelperText}
-              currentLanguage={currentLanguage}
-              sendBtn={sendBtn}
-            />
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="lg:col-span-2"
+            >
+              <ContactForm
+                get={get}
+                handleSubmit={handleSubmit}
+                handleInputChange={handleInputChange}
+                formData={formData}
+                isLoading={isLoading}
+                serviceOptions={serviceOptions}
+                budgetOptions={budgetOptions}
+                timelineOptions={timelineOptions}
+                pricePlaceholders={pricePlaceholders}
+                priceHelperText={priceHelperText}
+                currentLanguage={currentLanguage}
+                sendBtn={sendBtn}
+              />
+            </motion.div>
 
-            {/* Contact Info Sidebar */}
-            <ContactInfoSidebar
-              get={get}
-              sidebarEmail={sidebarEmail}
-              sidebarPhone={sidebarPhone}
-              sidebarLocation={sidebarLocation}
-            />
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 }}
+              className="space-y-6"
+            >
+              <ContactInfoSidebar
+                get={get}
+                sidebarEmail={sidebarEmail}
+                sidebarPhone={sidebarPhone}
+                sidebarLocation={sidebarLocation}
+                // if your sidebar supports copy props, pass them:
+                copyToClipboard={copyToClipboard}
+                copiedEmail={copied === "email"}
+                copiedPhone={copied === "phone"}
+              />
+            </motion.div>
           </div>
         </div>
       </div>
