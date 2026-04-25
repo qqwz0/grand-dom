@@ -82,7 +82,7 @@ export default function HeroSection({
             className="gd-heading"
             style={{
               fontSize: "clamp(52px, 7vw, 92px)",
-              fontWeight: 300,
+              fontWeight: 600,
               lineHeight: 1.02,
               color: "#ffffff",
               marginBottom: 28,
@@ -94,7 +94,7 @@ export default function HeroSection({
             <em
               style={{
                 fontStyle: "italic",
-                fontWeight: 300,
+                fontWeight: 600,
                 color: "var(--gd-gold)",
               }}
             >
@@ -121,7 +121,10 @@ export default function HeroSection({
           </p>
 
           {/* CTA buttons */}
-          <div className="gd-hero-ctas" style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+          <div
+            className="gd-hero-ctas"
+            style={{ display: "flex", gap: 16, flexWrap: "wrap" }}
+          >
             <a
               href="#services"
               style={{
@@ -170,7 +173,10 @@ export default function HeroSection({
                   "transparent")
               }
             >
-              {get(["cta", "heroCta2"], get(["contact", "getInTouch"], "Porozmawiajmy"))}
+              {get(
+                ["cta", "heroCta2"],
+                get(["contact", "getInTouch"], "Porozmawiajmy"),
+              )}
             </a>
           </div>
         </div>
