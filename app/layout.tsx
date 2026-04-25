@@ -4,8 +4,23 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "GRAND DOM",
-  description: "GRAND DOM - real estate agency",
+  metadataBase: new URL("https://granddom.com"),
+  title: {
+    template: "%s | GRAND DOM",
+    default: "GRAND DOM — Real Estate Agency Warsaw",
+  },
+  description:
+    "GRAND DOM — real estate agency in Warsaw. We specialize in apartment sales, purchases and long-term rentals in Warsaw and Masovia. Investments in Spain.",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -16,7 +31,7 @@ export default function RootLayout({
   params: { lng: string };
 }) {
   return (
-    <html lang={params.lng}>
+    <html lang={params.lng ?? "pl"}>
       <head>
         <style>{`
 html {

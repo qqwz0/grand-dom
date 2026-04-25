@@ -29,18 +29,25 @@ export default function HeroSection({
   currentLanguage,
   ctaStart,
 }: any) {
+  const phoneHref = `tel:${contactPhone?.replace(/[\s()]/g, "")}`;
+  const emailHref = `mailto:${contactEmail}`;
+
   return (
     <section
       className="min-h-screen flex items-center justify-center p-4 relative"
-      style={{
-        backgroundImage: "url('/photo_2025-10-09_22-28-44.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
+      aria-label={brandName}
     >
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
+        <Image
+          src="/photo_2025-10-09_22-28-44.jpg"
+          alt=""
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+          quality={80}
+        />
         <div className="absolute inset-0 bg-gradient-to-br from-green-100/80 via-emerald-100/80 to-teal-100/80" />
       </div>
 
@@ -58,6 +65,7 @@ export default function HeroSection({
                         src="/logo.png"
                         alt={`${brandName} Logo`}
                         fill
+                        priority
                         className="object-contain"
                       />
                     </div>
@@ -83,70 +91,84 @@ export default function HeroSection({
               <div className="space-y-6">
                 <Card className="bg-green-50/90 border-green-200 backdrop-blur-sm">
                   <CardContent className="p-6 space-y-4">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                    <h2 className="text-lg font-semibold text-gray-800 mb-4">
                       {contactGetInTouch}
-                    </h3>
+                    </h2>
 
-                    {/* Email */}
-                    <div className="flex items-center justify-between group">
+                    <address className="not-italic space-y-4">
+                      {/* Email */}
+                      <div className="flex items-center justify-between group">
+                        <a
+                          href={emailHref}
+                          className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+                        >
+                          <div className="p-2 bg-green-100 rounded-lg">
+                            <Mail className="h-4 w-4 text-green-600" />
+                          </div>
+                          <div>
+                            <p className="text-sm text-gray-500">
+                              {get(["contact", "email", "label"], "Email")}
+                            </p>
+                            <p className="text-gray-800">{contactEmail}</p>
+                          </div>
+                        </a>
+                        <CopyButton contact={contactEmail} type={"email"} />
+                      </div>
+
+                      {/* Phone */}
+                      <div className="flex items-center justify-between group">
+                        <a
+                          href={phoneHref}
+                          className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+                        >
+                          <div className="p-2 bg-teal-100 rounded-lg">
+                            <Phone className="h-4 w-4 text-teal-600" />
+                          </div>
+                          <div>
+                            <p className="text-sm text-gray-500">
+                              {get(
+                                ["contact", "phone", "label"],
+                                "Telefon"
+                              )}
+                            </p>
+                            <p className="text-gray-800">{contactPhone}</p>
+                          </div>
+                        </a>
+                        <CopyButton contact={contactPhone} type={"phone"} />
+                      </div>
+
+                      {/* Location */}
                       <div className="flex items-center gap-3">
-                        <div className="p-2 bg-green-100 rounded-lg">
-                          <Mail className="h-4 w-4 text-green-600" />
+                        <div className="p-2 bg-emerald-100 rounded-lg">
+                          <MapPin className="h-4 w-4 text-emerald-600" />
                         </div>
                         <div>
                           <p className="text-sm text-gray-500">
-                            {get(["contact", "email", "label"], "Email")}
+                            {get(
+                              ["contact", "location", "label"],
+                              "Lokalizacja"
+                            )}
                           </p>
-                          <p className="text-gray-800">{contactEmail}</p>
+                          <p className="text-gray-800">{contactLocation}</p>
                         </div>
                       </div>
-                      <CopyButton contact={contactEmail} type={"email"} />
-                    </div>
 
-                    {/* Phone */}
-                    <div className="flex items-center justify-between group">
+                      {/* Website */}
                       <div className="flex items-center gap-3">
-                        <div className="p-2 bg-teal-100 rounded-lg">
-                          <Phone className="h-4 w-4 text-teal-600" />
+                        <div className="p-2 bg-lime-100 rounded-lg">
+                          <Globe className="h-4 w-4 text-lime-600" />
                         </div>
                         <div>
                           <p className="text-sm text-gray-500">
-                            {get(["contact", "phone", "label"], "Telefon")}
+                            {get(
+                              ["contact", "website", "label"],
+                              "Strona internetowa"
+                            )}
                           </p>
-                          <p className="text-gray-800">{contactPhone}</p>
+                          <p className="text-gray-800">{contactWebsite}</p>
                         </div>
                       </div>
-                      <CopyButton contact={contactPhone} type={"phone"} />
-                    </div>
-
-                    {/* Location */}
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 bg-emerald-100 rounded-lg">
-                        <MapPin className="h-4 w-4 text-emerald-600" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-gray-500">
-                          {get(["contact", "location", "label"], "Lokalizacja")}
-                        </p>
-                        <p className="text-gray-800">{contactLocation}</p>
-                      </div>
-                    </div>
-
-                    {/* Website */}
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 bg-lime-100 rounded-lg">
-                        <Globe className="h-4 w-4 text-lime-600" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-gray-500">
-                          {get(
-                            ["contact", "website", "label"],
-                            "Strona internetowa"
-                          )}
-                        </p>
-                        <p className="text-gray-800">{contactWebsite}</p>
-                      </div>
-                    </div>
+                    </address>
                   </CardContent>
                 </Card>
 
@@ -168,7 +190,7 @@ export default function HeroSection({
                         href={href || "#"}
                         target="_blank"
                         rel="noopener noreferrer"
-                        title={label}
+                        aria-label={label}
                       >
                         <Button
                           size="sm"

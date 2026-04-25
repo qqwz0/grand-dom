@@ -1,12 +1,13 @@
 export default function manifest() {
   return {
-    name: "GRAND DOM - Excellence in Every Domain",
+    name: "GRAND DOM — Real Estate Agency Warsaw",
     short_name: "GRAND DOM",
-    description: "Twój Dom w Sercu Warszawy",
-    start_url: "/",
+    description:
+      "Real estate agency in Warsaw. Sales, purchases and rentals in Warsaw and Masovia. Investments in Spain.",
+    start_url: "/pl",
     display: "standalone",
     background_color: "#ffffff",
-    theme_color: "#000000",
+    theme_color: "#10b981",
     icons: [
       {
         src: "/icon-192.png",
