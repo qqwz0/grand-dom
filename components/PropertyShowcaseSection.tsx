@@ -1,119 +1,209 @@
-"use client";
-
+﻿"use client";
 import React from "react";
-import { Button } from "./ui/button";
-import { ArrowRight, Building2 } from "lucide-react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 
-export default function PropertyShowcaseSection({
-  get,
-  router,
-  currentLanguage,
-  ctaViewProperties,
-}: any) {
+export default function PropertyShowcaseSection({ get }: any) {
+  const featureStats = get(["propertyShowcase", "featureStats"], [
+    { value: "50+", label: "Mieszkań w ofercie" },
+    { value: "15", label: "Dzielnic Warszawy" },
+  ]);
+
   return (
-    <section className="py-20 px-4 bg-white/50">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-16"
+    <section
+      id="properties"
+      style={{ background: "#ffffff", overflow: "hidden" }}
+    >
+      <div
+        className="gd-showcase-grid"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          minHeight: 600,
+        }}
+      >
+        {/* Image side */}
+        <div
+          className="gd-showcase-img"
+          style={{
+            position: "relative",
+            overflow: "hidden",
+            minHeight: 480,
+          }}
         >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Building2 className="h-8 w-8 text-green-500" />
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-              {get(
-                ["propertyShowcase", "heading"],
-                "Ekskluzywne Nieruchomości"
-              )}
-            </h2>
+          <Image
+            src="/photo_2025-12-21_18-18-44.jpg"
+            alt={get(
+              ["propertyShowcase", "imageAlt"],
+              "Eleganckie wnętrze nieruchomości"
+            )}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            style={{
+              objectFit: "cover",
+              transition: "transform 0.8s ease",
+            }}
+            onMouseEnter={(e) =>
+              ((e.currentTarget as HTMLImageElement).style.transform =
+                "scale(1.04)")
+            }
+            onMouseLeave={(e) =>
+              ((e.currentTarget as HTMLImageElement).style.transform =
+                "scale(1)")
+            }
+          />
+          <div
+            style={{
+              position: "absolute",
+              bottom: 36,
+              left: 36,
+              background: "var(--gd-gold)",
+              color: "#fff",
+              padding: "10px 20px",
+              fontFamily: "var(--font-dm-sans), sans-serif",
+              fontSize: 12,
+              letterSpacing: "0.06em",
+              borderRadius: 999,
+              boxShadow: "0 8px 24px -8px rgba(180,130,50,0.55)",
+            }}
+          >
+            {get(["propertyShowcase", "heading"], "Wybrane oferty")}
           </div>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+        </div>
+
+        {/* Text side */}
+        <div
+          className="gd-showcase-text"
+          style={{
+            padding: "80px clamp(40px, 6vw, 72px)",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            background: "var(--gd-cream)",
+          }}
+        >
+          {/* Gold uppercase label */}
+          <div className="gd-label" style={{ marginBottom: 16 }}>
+            {get(["propertyShowcase", "label"], "Nieruchomości premium")}
+          </div>
+
+          {/* Short two-line serif heading */}
+          <h2
+            className="gd-heading"
+            style={{
+              fontSize: "clamp(32px, 3.5vw, 48px)",
+              fontWeight: 300,
+              color: "var(--gd-ink)",
+              lineHeight: 1.1,
+              marginBottom: 8,
+            }}
+          >
+            {get(["propertyShowcase", "heading"], "Eleganckie wnętrza,")}
+            <br />
+            <em style={{ fontStyle: "italic", fontWeight: 300 }}>
+              {get(["propertyShowcase", "subheading"], "wyjątkowa jakość")}
+            </em>
+          </h2>
+
+          {/* Gold divider */}
+          <div
+            style={{
+              width: 48,
+              height: 2,
+              background: "var(--gd-gold)",
+              margin: "20px 0",
+            }}
+          />
+
+          {/* Description */}
+          <p
+            style={{
+              fontFamily: "var(--font-dm-sans), sans-serif",
+              fontSize: 15,
+              color: "var(--gd-muted)",
+              lineHeight: 1.85,
+              marginBottom: 40,
+            }}
+          >
             {get(
-              ["propertyShowcase", "subtitle"],
-              "Odkryj wyjątkowe nieruchomości..."
+              ["propertyShowcase", "description"],
+              "Nasze oferty to mieszkania w sprawdzonych lokalizacjach — z dobrym układem, jasnym widokiem i sąsiedztwem, w którym chce się zostać."
             )}
           </p>
-        </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="relative h-96 rounded-lg overflow-hidden shadow-xl"
+          {/* Stats */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: 24,
+              marginBottom: 48,
+            }}
           >
-            <Image
-              src="/photo_2025-12-21_18-18-44.jpg"
-              alt={get(
-                ["propertyShowcase", "imageAlt"],
-                "Eleganckie wnętrze nieruchomości"
-              )}
-              fill
-              className="object-cover hover:scale-105 transition-transform duration-500"
-            />
-          </motion.div>
-
-          {/* Content (slide from right) */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="space-y-6"
-          >
-            <h3 className="text-2xl font-bold text-gray-800">
-              {get(
-                ["propertyShowcase", "title"],
-                "Eleganckie Wnętrza, Wyjątkowa Jakość"
-              )}
-            </h3>
-
-            <p className="text-gray-600 leading-relaxed">
-              {get(
-                ["propertyShowcase", "description"],
-                "Nasze nieruchomości charakteryzują się najwyższą jakością..."
-              )}
-            </p>
-
-            <div className="grid grid-cols-2 gap-4">
-              {(get(["propertyShowcase", "featureStats"], []) as any[]).map(
-                (s, i) => (
+            {featureStats.map(
+              ({ value, label }: { value: string; label: string }, i: number) => (
+                <div key={i}>
                   <div
-                    key={i}
-                    className={`text-center p-4 ${
-                      i % 2 === 0 ? "bg-green-50" : "bg-teal-50"
-                    } rounded-lg`}
+                    className="gd-heading"
+                    style={{
+                      fontSize: 48,
+                      fontWeight: 300,
+                      color: "var(--gd-teal)",
+                      lineHeight: 1,
+                    }}
                   >
-                    <div
-                      className={`text-2xl font-bold ${
-                        i % 2 === 0 ? "text-green-600" : "text-teal-600"
-                      }`}
-                    >
-                      {s.value}
-                    </div>
-                    <div className="text-sm text-gray-600">{s.label}</div>
+                    {value}
                   </div>
-                )
-              )}
-            </div>
+                  <div
+                    style={{
+                      fontFamily: "var(--font-dm-sans), sans-serif",
+                      fontSize: 11,
+                      color: "var(--gd-muted)",
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                      marginTop: 6,
+                    }}
+                  >
+                    {label}
+                  </div>
+                </div>
+              )
+            )}
+          </div>
 
-            <Button
-              onClick={() =>
-                router.push(`/${currentLanguage.code}/contact`, {
-                  scroll: false,
-                })
-              }
-              className="w-full bg-gradient-to-r cursor-pointer from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white font-semibold py-3"
-            >
-              {ctaViewProperties}
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </motion.div>
+          {/* CTA link */}
+          <a
+            href="#contact"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 12,
+              color: "var(--gd-teal)",
+              textDecoration: "none",
+              fontFamily: "var(--font-dm-sans), sans-serif",
+              fontSize: 13,
+              fontWeight: 500,
+              letterSpacing: "0.04em",
+              borderBottom: "1px solid var(--gd-teal)",
+              paddingBottom: 4,
+              width: "fit-content",
+              transition: "gap 0.2s",
+            }}
+            onMouseEnter={(e) =>
+              ((e.currentTarget as HTMLAnchorElement).style.gap = "20px")
+            }
+            onMouseLeave={(e) =>
+              ((e.currentTarget as HTMLAnchorElement).style.gap = "12px")
+            }
+          >
+            {get(["cta", "viewProperties"], "Zobacz dostępne oferty")}
+            <svg width="16" height="8" viewBox="0 0 16 8" fill="none">
+              <path
+                d="M0 4h14M10 1l4 3-4 3"
+                stroke="currentColor"
+                strokeWidth="1.2"
+              />
+            </svg>
+          </a>
         </div>
       </div>
     </section>

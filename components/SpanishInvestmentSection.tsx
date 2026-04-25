@@ -1,87 +1,230 @@
-import React from "react";
-import { Card, CardContent } from "./ui/card";
-import { Sun } from "lucide-react";
-import { Button } from "./ui/button";
-import { motion } from "framer-motion";
+﻿import React from "react";
 
-export default function SpanishInvestmentSection({
-  get,
-  router,
-  currentLanguage,
-  ctaLearnSpain,
-}: any) {
+export default function SpanishInvestmentSection({ get }: any) {
+  const offers: string[] = get(["spanishInvestment", "offers"], [
+    "Nieruchomości poniżej ceny rynkowej",
+    "Dochód pasywny od pierwszego dnia",
+    "Sprawdzeni lokalni deweloperzy",
+    "Pełne zarządzanie najmem",
+  ]);
+
+  const benefits: string[] = get(["spanishInvestment", "benefits"], [
+    "Słońce przez cały rok",
+    "Dostęp do projektów hotelowych",
+    "Pełne wsparcie prawne",
+    "Pomoc w formalnościach na miejscu",
+  ]);
+
   return (
-    <section className="py-20 px-4 bg-gradient-to-r from-orange-100 to-yellow-100">
-      <div className="max-w-4xl mx-auto text-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+    <section
+      id="spain"
+      className="gd-section"
+      style={{
+        padding: "100px clamp(20px, 5vw, 48px)",
+        background:
+          "linear-gradient(135deg, oklch(0.28 0.09 148) 0%, oklch(0.38 0.11 148) 100%)",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* Decorative circles */}
+      <div
+        style={{
+          position: "absolute",
+          right: -80,
+          top: -80,
+          width: 400,
+          height: 400,
+          borderRadius: "50%",
+          border: "1px solid rgba(255,255,255,0.07)",
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          right: 40,
+          top: 40,
+          width: 240,
+          height: 240,
+          borderRadius: "50%",
+          border: "1px solid rgba(255,255,255,0.05)",
+          pointerEvents: "none",
+        }}
+      />
+
+      <div
+        style={{
+          maxWidth: 1200,
+          margin: "0 auto",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
+        <div
+          className="gd-spain-grid"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 80,
+            alignItems: "start",
+          }}
         >
-          <Card className="bg-white/80 border-orange-200 shadow-xl">
-            <CardContent className="p-8">
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <Sun className="h-12 w-12 text-orange-500" />
-                <h2 className="text-3xl font-bold text-gray-800">
-                  {get(
-                    ["spanishInvestment", "heading"],
-                    "🇪🇸 Hiszpania - Inwestycja, która daje więcej!"
-                  )}
-                </h2>
-              </div>
-              <p className="text-lg text-gray-700 mb-6">
-                {get(
-                  ["spanishInvestment", "intro"],
-                  "Oprócz naszych głównych usług w Warszawie, oferujemy wyjątkową możliwość inwestowania w słonecznej Hiszpanii!"
-                )}
-              </p>
-              <div className="grid md:grid-cols-2 gap-6 text-left">
-                <div className="space-y-3">
-                  <h4 className="font-semibold text-gray-800">
-                    {get(
-                      ["spanishInvestment", "offersTitle"],
-                      "✅ Co oferujemy:"
-                    )}
-                  </h4>
-                  <ul className="space-y-2 text-gray-600">
-                    {(get(["spanishInvestment", "offers"], []) as string[]).map(
-                      (o, i) => (
-                        <li key={i}>• {o}</li>
-                      )
-                    )}
-                  </ul>
-                </div>
-                <div className="space-y-3">
-                  <h4 className="font-semibold text-gray-800">
-                    {get(
-                      ["spanishInvestment", "benefitsTitle"],
-                      "🌞 Dodatkowe korzyści:"
-                    )}
-                  </h4>
-                  <ul className="space-y-2 text-gray-600">
-                    {(
-                      get(["spanishInvestment", "benefits"], []) as string[]
-                    ).map((b, i) => (
-                      <li key={i}>• {b}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <Button
-                onClick={() =>
-                  router.push(`/${currentLanguage.code}/contact`, {
-                    scroll: false,
-                  })
-                }
-                className="mt-6 bg-gradient-to-r cursor-pointer from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-semibold px-8 py-3"
+          {/* Left: text + CTA */}
+          <div>
+            <div
+              className="gd-label"
+              style={{ color: "rgba(255,255,255,0.5)", marginBottom: 16 }}
+            >
+              {get(["spanishInvestment", "foreignLabel"], "Inwestycje zagraniczne")}
+            </div>
+
+            <h2
+              className="gd-heading"
+              style={{
+                fontSize: "clamp(36px, 4vw, 52px)",
+                fontWeight: 300,
+                color: "#ffffff",
+                lineHeight: 1.1,
+                marginBottom: 24,
+              }}
+            >
+              {get(["spanishInvestment", "heading1"], "Hiszpania —")}
+              <br />
+              <em style={{ fontStyle: "italic", fontWeight: 300 }}>
+                {get(["spanishInvestment", "heading2"], "lato przez cały rok")}
+              </em>
+            </h2>
+
+            <div
+              style={{
+                width: 48,
+                height: 2,
+                background: "rgba(255,255,255,0.3)",
+                marginBottom: 24,
+              }}
+            />
+
+            <p
+              style={{
+                fontFamily: "var(--font-dm-sans), sans-serif",
+                fontSize: 15,
+                color: "rgba(255,255,255,0.7)",
+                lineHeight: 1.85,
+                marginBottom: 40,
+              }}
+            >
+              {get(
+                ["spanishInvestment", "intro"],
+                "Oprócz Warszawy otwieramy drzwi do hiszpańskiego rynku. Z lokalnym partnerem, który zna każdy adres."
+              )}
+            </p>
+
+            <div style={{ marginBottom: 16, fontFamily: "var(--font-dm-sans), sans-serif", fontSize: 13, color: "rgba(255,255,255,0.6)" }}>
+              {get(["spanishInvestment", "guaranteeNote"], "")}
+            </div>
+
+            <a
+              href="#contact"
+              style={{
+                display: "inline-block",
+                background: "rgba(255,255,255,0.12)",
+                border: "1px solid rgba(255,255,255,0.3)",
+                color: "#fff",
+                textDecoration: "none",
+                padding: "14px 34px",
+                fontFamily: "var(--font-dm-sans), sans-serif",
+                fontSize: 13,
+                fontWeight: 500,
+                letterSpacing: "0.04em",
+                borderRadius: 999,
+                transition: "background 0.2s",
+              }}
+              onMouseEnter={(e) =>
+                ((e.currentTarget as HTMLAnchorElement).style.background =
+                  "rgba(255,255,255,0.22)")
+              }
+              onMouseLeave={(e) =>
+                ((e.currentTarget as HTMLAnchorElement).style.background =
+                  "rgba(255,255,255,0.12)")
+              }
+            >
+              {get(["cta", "learnSpain"], "Dowiedz się więcej")}
+            </a>
+          </div>
+
+          {/* Right: two info boxes */}
+          <div
+            className="gd-spain-boxes"
+            style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}
+          >
+            {[
+              {
+                title: get(["spanishInvestment", "offersTitle"], "Co oferujemy"),
+                items: offers,
+              },
+              {
+                title: get(
+                  ["spanishInvestment", "benefitsTitle"],
+                  "Dodatkowe korzyści"
+                ),
+                items: benefits,
+              },
+            ].map(({ title, items }) => (
+              <div
+                key={title}
+                style={{
+                  background: "rgba(255,255,255,0.07)",
+                  padding: "34px 28px",
+                  borderRadius: 14,
+                  border: "1px solid rgba(255,255,255,0.06)",
+                }}
               >
-                {ctaLearnSpain}
-                <Sun className="ml-2 h-4 w-4" />
-              </Button>
-            </CardContent>
-          </Card>
-        </motion.div>
+                <div
+                  className="gd-label"
+                  style={{
+                    color: "rgba(255,255,255,0.45)",
+                    marginBottom: 20,
+                  }}
+                >
+                  {title}
+                </div>
+                {items.map((item: string) => (
+                  <div
+                    key={item}
+                    style={{
+                      display: "flex",
+                      gap: 12,
+                      marginBottom: 14,
+                      alignItems: "flex-start",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: 4,
+                        height: 4,
+                        background: "var(--gd-gold)",
+                        borderRadius: "50%",
+                        marginTop: 7,
+                        flexShrink: 0,
+                      }}
+                    />
+                    <span
+                      style={{
+                        fontFamily: "var(--font-dm-sans), sans-serif",
+                        fontSize: 14,
+                        color: "rgba(255,255,255,0.75)",
+                        lineHeight: 1.6,
+                      }}
+                    >
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

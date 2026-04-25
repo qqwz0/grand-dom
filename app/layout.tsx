@@ -1,7 +1,21 @@
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
+import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin", "latin-ext"],
+  weight: ["300", "400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-cormorant",
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin", "latin-ext"],
+  weight: ["300", "400", "500"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://granddom.com"),
@@ -31,16 +45,10 @@ export default function RootLayout({
   params: { lng: string };
 }) {
   return (
-    <html lang={params.lng ?? "pl"}>
-      <head>
-        <style>{`
-html {
-  font-family: ${GeistSans.style.fontFamily};
-  --font-sans: ${GeistSans.variable};
-  --font-mono: ${GeistMono.variable};
-}
-        `}</style>
-      </head>
+    <html
+      lang={params.lng ?? "pl"}
+      className={`${cormorant.variable} ${dmSans.variable}`}
+    >
       <body>{children}</body>
     </html>
   );

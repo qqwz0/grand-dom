@@ -9,11 +9,14 @@
     "tagline": "Doskonałość w Każdej Dziedzinie"
   },
   "badge": {
-    "new": "Biuro Nieruchomości"
+    "new": "Biuro nieruchomości · Warszawa"
   },
   "hero": {
     "heading": "GRAND DOM",
     "subheading": "Twój Dom w Sercu Warszawy",
+    "line1": "Twój dom",
+    "line2": "w sercu",
+    "line3": "Warszawy",
     "text": "Świeże podejście do rynku nieruchomości. Specjalizujemy się w sprzedaży, kupnie i wynajmie nieruchomości w Warszawie i województwie mazowieckim. Dodatkowo oferujemy inwestycje w słonecznej Hiszpanii."
   },
   "specialization": {
@@ -28,6 +31,10 @@
   },
   "contact": {
     "getInTouch": "Skontaktuj się z nami",
+    "cardLabel": "Bezpośredni kontakt",
+    "heading": "Zacznijmy",
+    "heading2": "rozmowę",
+    "intro": "Napisz, zadzwoń albo wpadnij na kawę. Odpowiadamy w ciągu doby — bez automatycznych wiadomości i bez naciągania.",
     "email": {
       "label": "Email",
       "value": "granddom7@op.pl",
@@ -55,14 +62,28 @@
       "instagram": ""
     }
   },
+  "nav": {
+    "services": "Usługi",
+    "properties": "Nieruchomości",
+    "spain": "Hiszpania",
+    "contact": "Kontakt",
+    "ctaLabel": "Napisz do nas"
+  },
   "cta": {
     "startProject": "Rozpocznij Współpracę",
     "viewProperties": "Zobacz Dostępne Nieruchomości",
-    "learnSpain": "Dowiedz się więcej o Hiszpanii"
+    "learnSpain": "Dowiedz się więcej o Hiszpanii",
+    "heroCta1": "Zobacz ofertę",
+    "heroCta2": "Porozmawiajmy"
   },
+  "realEstateServicesTitle": "Nasze usługi",
+  "realEstateServicesSubtitle": "Kompleksowe rozwiązania dopasowane do Twoich potrzeb na rynku nieruchomości w Warszawie.",
+  "realEstateServicesLabel": "Co robimy",
+  "realEstateServicesDescription": "Mały zespół, który zna Warszawę dzielnica po dzielnicy. Prowadzimy Cię od pierwszej rozmowy aż do odebrania kluczy.",
   "realEstateServices": [
     {
       "title": "Sprzedaż Mieszkań w Warszawie",
+      "sub": "Warszawa i Mazowsze",
       "description": "Kompleksowa obsługa sprzedaży mieszkań, domów i lokali komercyjnych w Warszawie i województwie mazowieckim.",
       "features": [
         "Wycena nieruchomości",
@@ -72,6 +93,7 @@
     },
     {
       "title": "Kupno Nieruchomości",
+      "sub": "Szukamy razem",
       "description": "Pomoc w znalezieniu idealnej nieruchomości dopasowanej do Twoich potrzeb i budżetu.",
       "features": [
         "Indywidualne wyszukiwanie",
@@ -81,6 +103,7 @@
     },
     {
       "title": "Wynajem Długoterminowy",
+      "sub": "Spokojna głowa",
       "description": "Profesjonalne zarządzanie wynajmem nieruchomości prywatnych i komercyjnych.",
       "features": [
         "Selekcja najemców",
@@ -90,6 +113,7 @@
     },
     {
       "title": "Doradztwo Prawne",
+      "sub": "Bezpieczna transakcja",
       "description": "Kompleksowe wsparcie prawne przy transakcjach nieruchomościowych.",
       "features": [
         "Sprawdzenie dokumentów",
@@ -99,6 +123,7 @@
     },
     {
       "title": "Doradztwo Inwestycyjne",
+      "sub": "Tam, gdzie się opłaca",
       "description": "Profesjonalne doradztwo w zakresie inwestycji w nieruchomości na polskim rynku.",
       "features": [
         "Analiza rynku",
@@ -108,6 +133,7 @@
     },
     {
       "title": "Inwestycje w Hiszpanii",
+      "sub": "Costa del Sol i okolice",
       "description": "Możliwość inwestowania w słoneczne nieruchomości hiszpańskie z opcjami zarządzania i dochodu pasywnego.",
       "features": [
         "Partnerstwa z deweloperami",
@@ -117,23 +143,27 @@
     }
   ],
   "propertyShowcase": {
-    "heading": "Ekskluzywne Nieruchomości",
-    "subtitle": "Odkryj wyjątkowe nieruchomości, które oferujemy naszym klientom w Warszawie i okolicach.",
+    "label": "Nieruchomości premium",
+    "heading": "Eleganckie wnętrza,",
+    "subheading": "wyjątkowa jakość",
     "featureStats": [
       {
         "value": "50+",
-        "label": "Dostępnych Mieszkań"
+        "label": "Mieszkań w ofercie"
       },
       {
-        "value": "15+",
+        "value": "15",
         "label": "Dzielnic Warszawy"
       }
     ],
-    "description": "Nasze nieruchomości charakteryzują się najwyższą jakością wykonania, eleganckim designem i przemyślanymi rozwiązaniami architektonicznymi. Każda z nich to miejsce, które może stać się Twoim wymarzonym domem."
+    "description": "Nasze oferty to mieszkania w sprawdzonych lokalizacjach – z dobrym układem, jasnym widokiem i sąsiedztwem, w którym chce się zostać. Każde oglądamy osobiście, zanim trafi do oferty."
   },
   "spanishInvestment": {
+    "foreignLabel": "Inwestycje zagraniczne",
+    "heading1": "Hiszpania —",
+    "heading2": "lato przez cały rok",
     "heading": "🇪🇸 Hiszpania - Inwestycja, która daje więcej!",
-    "intro": "Oprócz naszych głównych usług w Warszawie, oferujemy wyjątkową możliwość inwestowania w słonecznej Hiszpanii.",
+    "intro": "Oprócz Warszawy otwieramy drzwi do hiszpańskiego rynku. Z lokalnym partnerem, który zna każdy adres – i pilnuje, żeby inwestycja przynosiła to, co obiecaliśmy.",
     "offersTitle": "Co oferujemy:",
     "offers": [
       "Nieruchomości poniżej cen rynkowych",
@@ -151,6 +181,8 @@
     "guaranteeNote": "Gwarantowany zwrot z inwestycji — warunki ustalane indywidualnie w umowie"
   },
   "visionMission": {
+    "title": "Nasza Wizja i Misja",
+    "intro": "Jako nowa firma, kierujemy się ambitnymi celami i jasną wizją przyszłości",
     "visionHeading": "Nasza Wizja",
     "visionText": "Stać się wiodącą agencją nieruchomości w Warszawie, pomagającą klientom znaleźć wymarzone mieszkania i osiągnąć sukces inwestycyjny na polskim i hiszpańskim rynku nieruchomości.",
     "missionHeading": "Nasza Misja",
@@ -195,27 +227,83 @@
   "stats": {
     "items": [
       {
+        "value": "50+",
+        "label": "Mieszkań w ofercie"
+      },
+      {
+        "value": "15",
+        "label": "Dzielnic Warszawy"
+      },
+      {
         "value": "2024",
         "label": "Rok założenia"
       },
       {
-        "value": "100%",
-        "label": "Zadowolenie klientów"
-      },
-      {
         "value": "24/7",
-        "label": "Dostępne wsparcie"
-      },
-      {
-        "value": "∞",
-        "label": "Możliwości"
+        "label": "Kontakt z agentem"
       }
     ]
+  },
+  "whyChoose": {
+    "title": "Dlaczego GRAND DOM",
+    "items": [
+      "Odpowiadamy w ciągu 24 godzin",
+      "Pierwsza konsultacja bez opłat",
+      "Indywidualne podejście do każdego klienta",
+      "Znamy Warszawę dzielnica po dzielnicy"
+    ]
+  },
+  "form": {
+    "nameLabel": "Imię i nazwisko *",
+    "namePlaceholder": "Anna Kowalska",
+    "emailLabel": "E-mail *",
+    "emailPlaceholder": "anna@example.com",
+    "phoneLabel": "Telefon",
+    "serviceLabel": "Czego szukasz? *",
+    "servicePlaceholder": "Wybierz usługę",
+    "messageLabel": "Wiadomość *",
+    "messagePlaceholder": "Napisz parę słów o swoich potrzebach, budżecie, terminach…",
+    "send": "Wyślij wiadomość",
+    "submittingText": "Wysyłanie…",
+    "errorText": "Coś poszło nie tak. Spróbuj ponownie.",
+    "successTitle": "Dziękujemy",
+    "successText": "Odezwiemy się w ciągu 24 godzin.",
+    "service_buying": "🛒 Kupno",
+    "service_selling": "💰 Sprzedaż",
+    "service_renting": "🏠 Wynajem",
+    "service_cleaning": "🧹 Sprzątanie mieszkania",
+    "service_repairs": "🔧 Drobne naprawy",
+    "service_painting": "🎨 Malowanie / odświeżanie",
+    "typeLabel": "Typ nieruchomości",
+    "typePlaceholder": "Wybierz typ nieruchomości",
+    "type_apartment": "Mieszkanie",
+    "type_house": "Dom",
+    "type_plot": "Działka",
+    "type_commercial": "Lokal",
+    "timelineLabel": "Harmonogram projektu",
+    "timelinePlaceholder": "Kiedy potrzebujesz realizacji?",
+    "timeline_asap": "Jak najszybciej",
+    "timeline_1month": "W ciągu 1 miesiąca",
+    "timeline_3months": "W ciągu 3 miesięcy",
+    "timeline_6months": "W ciągu 6 miesięcy",
+    "timeline_flexible": "Jestem elastyczny",
+    "priceLabel": "Zakres cenowy (zł)",
+    "pricePlaceholderBuying": "np. 100000-250000",
+    "pricePlaceholderRenting": "np. 500-1500",
+    "priceHelperBuying": "Wprowadź całkowity przedział cenowy",
+    "priceHelperRenting": "Wprowadź miesięczny przedział cenowy"
+  },
+  "contactPage": {
+    "title": "Opowiedz nam, czego szukasz",
+    "subtitle": "Im więcej szczegółów napiszesz, tym lepiej dopasujemy ofertę."
+  },
+  "ui": {
+    "scroll": "Przewiń"
   },
   "footer": {
     "brand": "GRAND DOM",
     "copyright": "© 2026 GRAND DOM. Gotowi, aby zmieniać rzeczywistość.",
-    "tagline": "Twoje marzenia są naszym zadaniem - od pierwszego kontaktu aż do przekazania kluczy."
+    "tagline": "Prowadzimy Cię od pierwszej rozmowy aż do odebrania kluczy. Bez pośpiechu i bez ukrytych prowizji."
   },
   "languages": {
     "available": [

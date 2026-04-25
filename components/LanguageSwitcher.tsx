@@ -1,62 +1,140 @@
-import React from "react";
-import { Button } from "./ui/button";
-import { ChevronDown, Languages } from "lucide-react";
-import { Card, CardContent } from "./ui/card";
+﻿"use client";
+import React, { useRef, useEffect, useState } from "react";
+import { ChevronDown } from "lucide-react";
 
 export default function LanguageSwitcher({
-  showLanguages,
-  setShowLanguages,
   languages,
   currentLanguage,
   switchLanguage,
+  dark = false,
 }: {
-  showLanguages: boolean;
-  setShowLanguages: (v: boolean) => void;
   languages: any[];
   currentLanguage: any;
   switchLanguage: (code: string) => void;
+  dark?: boolean;
 }) {
-  return (
-    <div className="relative">
-      <Button
-        variant="outline"
-        size="sm"
-        className="bg-white/90 backdrop-blur-sm border-green-200 text-gray-700 hover:bg-white hover:border-green-300 transition-all duration-200 shadow-lg"
-        onClick={() => setShowLanguages(!showLanguages)}
-      >
-        <Languages className="h-4 w-4 mr-2" />
-        <span className="mr-1">{currentLanguage.flag}</span>
-        <span className="mr-1">{currentLanguage.name}</span>
-        <ChevronDown
-          className={`h-3 w-3 transition-transform ${
-            showLanguages ? "rotate-180" : ""
-          }`}
-        />
-      </Button>
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
-      {showLanguages && (
-        <Card className="absolute top-full mt-2 right-0 w-48 bg-white/95 backdrop-blur-sm border-green-200 shadow-xl">
-          <CardContent className="p-2">
-            {languages.map((language: any) => (
-              <Button
-                key={language.code}
-                variant={
-                  currentLanguage.code === language.code ? "default" : "ghost"
+  useEffect(() => {
+    const onDocClick = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("mousedown", onDocClick);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDocClick);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, []);
+
+  const btnColor = dark ? "rgba(255,255,255,0.9)" : "var(--gd-ink)";
+  const btnBorder = dark
+    ? "1px solid rgba(255,255,255,0.35)"
+    : "1px solid var(--gd-border)";
+  const btnBg = dark ? "rgba(255,255,255,0.1)" : "rgba(255,255,255,0.9)";
+
+  return (
+    <div ref={ref} style={{ position: "relative" }}>
+      <button
+        onClick={() => setOpen(!open)}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 6,
+          background: btnBg,
+          border: btnBorder,
+          color: btnColor,
+          padding: "7px 14px",
+          borderRadius: 999,
+          cursor: "pointer",
+          fontFamily: "var(--font-dm-sans), sans-serif",
+          fontSize: 12,
+          fontWeight: 400,
+          letterSpacing: "0.04em",
+          backdropFilter: "blur(6px)",
+          transition: "all 0.2s",
+        }}
+      >
+        <span>{currentLanguage.flag}</span>
+        <span>{currentLanguage.name}</span>
+        <ChevronDown
+          size={12}
+          style={{
+            transition: "transform 0.2s",
+            transform: open ? "rotate(180deg)" : "rotate(0deg)",
+          }}
+        />
+      </button>
+
+      {open && (
+        <div
+          style={{
+            position: "absolute",
+            top: "calc(100% + 8px)",
+            right: 0,
+            background: "rgba(255,255,255,0.97)",
+            backdropFilter: "blur(14px)",
+            border: "1px solid var(--gd-border)",
+            borderRadius: 12,
+            boxShadow: "0 12px 40px -12px rgba(20,40,30,0.2)",
+            overflow: "hidden",
+            minWidth: 148,
+            zIndex: 200,
+          }}
+        >
+          {languages.map((lang) => (
+            <button
+              key={lang.code}
+              onClick={() => {
+                switchLanguage(lang.code);
+                setOpen(false);
+              }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                width: "100%",
+                padding: "10px 16px",
+                background:
+                  currentLanguage.code === lang.code
+                    ? "var(--gd-teal-lt)"
+                    : "transparent",
+                color:
+                  currentLanguage.code === lang.code
+                    ? "var(--gd-teal)"
+                    : "var(--gd-ink)",
+                border: "none",
+                cursor: "pointer",
+                fontFamily: "var(--font-dm-sans), sans-serif",
+                fontSize: 13,
+                fontWeight: currentLanguage.code === lang.code ? 500 : 400,
+                textAlign: "left",
+                transition: "background 0.15s",
+              }}
+              onMouseEnter={(e) => {
+                if (currentLanguage.code !== lang.code) {
+                  (e.currentTarget as HTMLButtonElement).style.background =
+                    "var(--gd-teal-lt)";
                 }
-                size="sm"
-                className={`w-full justify-start mb-1 last:mb-0 transition-colors ${
-                  currentLanguage.code === language.code
-                    ? "bg-green-500 text-white hover:bg-green-600"
-                    : "text-gray-700 hover:bg-green-50"
-                }`}
-                onClick={() => switchLanguage(language.code)}
-              >
-                <span className="mr-3 text-lg">{language.flag}</span>
-                {language.name}
-              </Button>
-            ))}
-          </CardContent>
-        </Card>
+              }}
+              onMouseLeave={(e) => {
+                if (currentLanguage.code !== lang.code) {
+                  (e.currentTarget as HTMLButtonElement).style.background =
+                    "transparent";
+                }
+              }}
+            >
+              <span style={{ fontSize: 16 }}>{lang.flag}</span>
+              {lang.name}
+            </button>
+          ))}
+        </div>
       )}
     </div>
   );

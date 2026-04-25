@@ -9,11 +9,14 @@
     "tagline": "Excellence in Every Field"
   },
   "badge": {
-    "new": "Real Estate Agency"
+    "new": "Real Estate Agency · Warsaw"
   },
   "hero": {
     "heading": "GRAND DOM",
     "subheading": "Your Home in the Heart of Warsaw",
+    "line1": "Your Home",
+    "line2": "in the Heart of",
+    "line3": "Warsaw",
     "text": "A fresh approach to the real estate market. We specialize in sales, purchases and rentals in Warsaw and the Masovian region. We also offer investments in sunny Spain."
   },
   "specialization": {
@@ -28,6 +31,10 @@
   },
   "contact": {
     "getInTouch": "Get in touch",
+    "cardLabel": "Direct contact",
+    "heading": "Let's start",
+    "heading2": "a conversation",
+    "intro": "Write, call or come over for a coffee. We reply within 24 hours — no automated messages, no pressure.",
     "email": {
       "label": "Email",
       "value": "granddom7@op.pl",
@@ -47,22 +54,28 @@
       "value": "www.granddom.com"
     }
   },
-  "grand_dom": {
-    "title": "Find us on grand_dom media",
-    "links": {
-      "linkedin": "",
-      "twitter": "",
-      "instagram": ""
-    }
+  "nav": {
+    "services": "Services",
+    "properties": "Properties",
+    "spain": "Spain",
+    "contact": "Contact",
+    "ctaLabel": "Write to us"
   },
   "cta": {
     "startProject": "Start a Project",
     "viewProperties": "View Available Properties",
-    "learnSpain": "Learn more about Spain"
+    "learnSpain": "Learn more about Spain",
+    "heroCta1": "View properties",
+    "heroCta2": "Get in touch"
   },
+  "realEstateServicesTitle": "Our Services",
+  "realEstateServicesSubtitle": "Comprehensive solutions tailored to your needs in the Warsaw real estate market.",
+  "realEstateServicesLabel": "What we do",
+  "realEstateServicesDescription": "A small team that knows Warsaw district by district. We guide you from the first conversation to receiving the keys.",
   "realEstateServices": [
     {
       "title": "Apartment Sales in Warsaw",
+      "sub": "Warsaw & Masovia",
       "description": "Comprehensive service for selling apartments, houses and commercial spaces in Warsaw and the Masovian region.",
       "features": [
         "Property valuation",
@@ -72,6 +85,7 @@
     },
     {
       "title": "Property Purchase",
+      "sub": "We search together",
       "description": "Assistance in finding the ideal property tailored to your needs and budget.",
       "features": [
         "Individual search",
@@ -81,6 +95,7 @@
     },
     {
       "title": "Long-term Rentals",
+      "sub": "Peace of mind",
       "description": "Professional management of private and commercial rental properties.",
       "features": [
         "Tenant selection",
@@ -90,6 +105,7 @@
     },
     {
       "title": "Legal Advisory",
+      "sub": "Safe transaction",
       "description": "Comprehensive legal support for real estate transactions.",
       "features": [
         "Document verification",
@@ -99,6 +115,7 @@
     },
     {
       "title": "Investment Advisory",
+      "sub": "Where it pays off",
       "description": "Professional guidance on real estate investments in the Polish market.",
       "features": [
         "Market analysis",
@@ -108,6 +125,7 @@
     },
     {
       "title": "Investments in Spain",
+      "sub": "Costa del Sol & surroundings",
       "description": "Opportunity to invest in sunny Spanish properties with management and passive income options.",
       "features": [
         "Partnerships with developers",
@@ -117,24 +135,27 @@
     }
   ],
   "propertyShowcase": {
-    "title": "Elegant Interiors, Exceptional Quality",
-    "heading": "Exclusive Properties",
-    "subtitle": "Discover the unique properties we offer to our clients in Warsaw and the surrounding area.",
+    "label": "Premium properties",
+    "heading": "Elegant interiors,",
+    "subheading": "exceptional quality",
     "featureStats": [
       {
         "value": "50+",
-        "label": "Available Apartments"
+        "label": "Properties available"
       },
       {
-        "value": "15+",
-        "label": "Warsaw Districts"
+        "value": "15",
+        "label": "Warsaw districts"
       }
     ],
-    "description": "Our properties are characterized by top-quality workmanship, elegant design and thoughtful architectural solutions. Each one is a place that can become your dream home."
+    "description": "Our listings are apartments in verified locations – with a good layout, bright view and a neighbourhood you'll want to stay in. We view each one in person before it goes on the market."
   },
   "spanishInvestment": {
+    "foreignLabel": "Foreign investments",
+    "heading1": "Spain —",
+    "heading2": "summer all year round",
     "heading": "🇪🇸 Spain — An investment that gives more!",
-    "intro": "In addition to our core services in Warsaw, we offer a unique opportunity to invest in sunny Spain.",
+    "intro": "Beyond Warsaw, we open doors to the Spanish market. With a local partner who knows every address – and makes sure the investment delivers what we promised.",
     "offersTitle": "What we offer:",
     "offers": [
       "Properties below market price",
@@ -151,8 +172,6 @@
     ],
     "guaranteeNote": "Guaranteed return on investment — terms agreed individually in the contract"
   },
-  "realEstateServicesTitle": "Our Services",
-  "realEstateServicesSubtitle": "Comprehensive solutions tailored to your needs in the Warsaw real estate market.",
   "visionMission": {
     "title": "Our Vision & Mission",
     "intro": "As a new company, we are guided by ambitious goals and a clear vision for the future",
@@ -200,27 +219,83 @@
   "stats": {
     "items": [
       {
+        "value": "50+",
+        "label": "Properties available"
+      },
+      {
+        "value": "15",
+        "label": "Warsaw districts"
+      },
+      {
         "value": "2024",
         "label": "Founded"
       },
       {
-        "value": "100%",
-        "label": "Client Satisfaction"
-      },
-      {
         "value": "24/7",
-        "label": "Support Available"
-      },
-      {
-        "value": "∞",
-        "label": "Possibilities"
+        "label": "Agent contact"
       }
     ]
+  },
+  "whyChoose": {
+    "title": "Why GRAND DOM",
+    "items": [
+      "We reply within 24 hours",
+      "First consultation free of charge",
+      "Individual approach to every client",
+      "We know Warsaw district by district"
+    ]
+  },
+  "form": {
+    "nameLabel": "Full name *",
+    "namePlaceholder": "Anna Smith",
+    "emailLabel": "Email *",
+    "emailPlaceholder": "anna@example.com",
+    "phoneLabel": "Phone",
+    "serviceLabel": "What are you looking for? *",
+    "servicePlaceholder": "Select a service",
+    "messageLabel": "Message *",
+    "messagePlaceholder": "Tell us a few words about your needs, budget, timeline…",
+    "send": "Send message",
+    "submittingText": "Sending…",
+    "errorText": "Something went wrong. Please try again.",
+    "successTitle": "Thank you",
+    "successText": "We'll get back to you within 24 hours.",
+    "service_buying": "🛒 Buying",
+    "service_selling": "💰 Selling",
+    "service_renting": "🏠 Renting",
+    "service_cleaning": "🧹 Apartment cleaning",
+    "service_repairs": "🔧 Minor repairs",
+    "service_painting": "🎨 Painting / refresh",
+    "typeLabel": "Property type",
+    "typePlaceholder": "Select property type",
+    "type_apartment": "Apartment",
+    "type_house": "House",
+    "type_plot": "Plot",
+    "type_commercial": "Commercial space",
+    "timelineLabel": "Project timeline",
+    "timelinePlaceholder": "When do you need this?",
+    "timeline_asap": "As soon as possible",
+    "timeline_1month": "Within 1 month",
+    "timeline_3months": "Within 3 months",
+    "timeline_6months": "Within 6 months",
+    "timeline_flexible": "I'm flexible",
+    "priceLabel": "Price range (PLN)",
+    "pricePlaceholderBuying": "e.g. 100000-250000",
+    "pricePlaceholderRenting": "e.g. 500-1500",
+    "priceHelperBuying": "Enter total price range",
+    "priceHelperRenting": "Enter monthly price range"
+  },
+  "contactPage": {
+    "title": "Tell us what you're looking for",
+    "subtitle": "The more details you provide, the better we can tailor our offer."
+  },
+  "ui": {
+    "scroll": "Scroll"
   },
   "footer": {
     "brand": "GRAND DOM",
     "copyright": "© 2026 GRAND DOM. Ready to change reality.",
-    "tagline": "Your dreams are our mission - from first contact to handing over the keys."
+    "tagline": "We guide you from the first conversation to receiving the keys. No rush, no hidden fees."
   },
   "languages": {
     "available": [

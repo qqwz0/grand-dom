@@ -1,121 +1,178 @@
-"use client";
-
-import React from "react";
-import { motion } from "framer-motion";
-import { ArrowRight, Building2, Sparkles } from "lucide-react";
-import { Card, CardContent } from "./ui/card";
+﻿"use client";
+import React, { useState } from "react";
 
 export default function RealEstateServicesSection({
   get,
   realEstateServices,
-  router,
-  currentLanguage,
 }: any) {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, x: -20 },
-    show: { opacity: 1, x: 0 },
-  };
+  const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Title animation */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Sparkles className="h-8 w-8 text-green-500" />
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-              {get(["realEstateServicesTitle"], "Nasze Usługi")}
-            </h2>
+    <section
+      id="services"
+      className="gd-section"
+      style={{
+        padding: "100px clamp(20px, 5vw, 48px)",
+        background: "var(--gd-cream)",
+      }}
+    >
+      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        {/* Section header */}
+        <div style={{ marginBottom: 64 }}>
+          <div className="gd-label" style={{ marginBottom: 16 }}>
+            {get(["realEstateServicesLabel"], "Co robimy")}
           </div>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+          <h2
+            className="gd-heading"
+            style={{
+              fontSize: "clamp(36px, 4vw, 52px)",
+              fontWeight: 300,
+              color: "var(--gd-ink)",
+              lineHeight: 1.1,
+              marginBottom: 20,
+            }}
+          >
+            {get(["realEstateServicesTitle"], "Nasze usługi")}
+          </h2>
+          {/* Gold divider */}
+          <div
+            style={{
+              width: 48,
+              height: 2,
+              background: "var(--gd-gold)",
+              marginBottom: 20,
+            }}
+          />
+          <p
+            style={{
+              fontFamily: "var(--font-dm-sans), sans-serif",
+              fontSize: 15,
+              color: "var(--gd-muted)",
+              maxWidth: 480,
+              lineHeight: 1.8,
+            }}
+          >
             {get(
-              ["realEstateServicesSubtitle"],
-              "Kompleksowe rozwiązania dostosowane do Twoich potrzeb na warszawskim rynku nieruchomości."
+              ["realEstateServicesDescription"],
+              "Mały zespół, który zna Warszawę dzielnica po dzielnicy."
             )}
           </p>
-        </motion.div>
+        </div>
 
-        {/* List stagger */}
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.15 }}
-          className="space-y-6"
+        {/* 3-column grid */}
+        <div
+          className="gd-services-grid"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: 18,
+          }}
         >
-          {realEstateServices.map((service: any, idx: number) => {
-            const Icon = service.icon ?? Building2;
-
+          {realEstateServices.map((service: any, i: number) => {
+            const isHovered = hovered === i;
             return (
-              <motion.div key={service.title ?? idx} variants={item}>
-                <Card
-                  className="p-0 bg-white/60 border-green-200 backdrop-blur-sm hover:bg-white hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 group overflow-hidden cursor-pointer"
-                  onClick={() =>
-                    router.push(`/${currentLanguage.code}/contact`, {
-                      scroll: false,
-                    })
-                  }
+              <div
+                key={i}
+                className="gd-card-hover"
+                onMouseEnter={() => setHovered(i)}
+                onMouseLeave={() => setHovered(null)}
+                style={{
+                  background: isHovered ? "var(--gd-teal)" : "#ffffff",
+                  padding: "42px 36px 38px",
+                  borderRadius: 14,
+                  cursor: "pointer",
+                  position: "relative",
+                  overflow: "hidden",
+                  boxShadow: isHovered
+                    ? "0 22px 50px -20px rgba(20,60,40,0.45)"
+                    : "0 1px 2px rgba(20,40,30,0.04), 0 8px 24px -16px rgba(20,40,30,0.12)",
+                  transform: isHovered ? "translateY(-4px)" : "translateY(0)",
+                  transition:
+                    "all 0.35s cubic-bezier(0.2, 0.6, 0.2, 1)",
+                }}
+              >
+                {/* Ghost number */}
+                <div
+                  className="gd-heading"
+                  style={{
+                    fontSize: 64,
+                    fontWeight: 300,
+                    lineHeight: 1,
+                    color: isHovered
+                      ? "rgba(255,255,255,0.07)"
+                      : "rgba(0,0,0,0.04)",
+                    position: "absolute",
+                    top: 16,
+                    right: 20,
+                    transition: "color 0.3s",
+                    userSelect: "none",
+                  }}
                 >
-                  <CardContent className="p-0">
-                    <div className="flex flex-col md:flex-row items-stretch">
-                      {/* Icon Section */}
-                      <div className="md:w-48 bg-gradient-to-br from-green-500 to-teal-500 p-8 flex items-center justify-center group-hover:from-green-600 group-hover:to-teal-600 transition-all duration-300">
-                        <div className="p-4 bg-white/20 rounded-2xl backdrop-blur-sm group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
-                          <Icon className="h-12 w-12 text-white" />
-                        </div>
-                      </div>
+                  {String(i + 1).padStart(2, "0")}
+                </div>
 
-                      {/* Content Section */}
-                      <div className="flex-1 p-6 md:p-8 flex flex-col justify-center">
-                        <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-green-600 transition-colors">
-                          {service.title}
-                        </h3>
-                        <p className="text-gray-600 mb-4 leading-relaxed">
-                          {service.description}
-                        </p>
+                <div
+                  className="gd-label"
+                  style={{ marginBottom: 12, color: "var(--gd-gold)" }}
+                >
+                  {service.sub || get(["badge", "new"], "Nieruchomości")}
+                </div>
 
-                        {service.features?.length > 0 && (
-                          <div className="flex flex-wrap gap-3">
-                            {service.features.map(
-                              (feature: string, i: number) => (
-                                <div
-                                  key={i}
-                                  className="flex items-center gap-2 px-3 py-1.5 bg-green-50 rounded-full text-sm text-gray-700 group-hover:bg-green-100 transition-colors"
-                                >
-                                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full" />
-                                  {feature}
-                                </div>
-                              )
-                            )}
-                          </div>
-                        )}
-                      </div>
+                <h3
+                  className="gd-heading"
+                  style={{
+                    fontSize: 22,
+                    fontWeight: 400,
+                    color: isHovered ? "#ffffff" : "var(--gd-ink)",
+                    marginBottom: 16,
+                    lineHeight: 1.2,
+                    transition: "color 0.3s",
+                  }}
+                >
+                  {service.title}
+                </h3>
 
-                      {/* Arrow indicator */}
-                      <div className="hidden md:flex items-center justify-center w-16 bg-gradient-to-l from-green-50 to-transparent group-hover:from-green-100 transition-colors">
-                        <ArrowRight className="h-6 w-6 text-green-500 group-hover:translate-x-1 transition-transform" />
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
+                <p
+                  style={{
+                    fontFamily: "var(--font-dm-sans), sans-serif",
+                    fontSize: 14,
+                    lineHeight: 1.75,
+                    color: isHovered ? "rgba(255,255,255,0.7)" : "var(--gd-muted)",
+                    marginBottom: 22,
+                    transition: "color 0.3s",
+                  }}
+                >
+                  {service.description}
+                </p>
+
+                {/* Tags */}
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                  {(service.features ?? []).map((tag: string, ti: number) => (
+                    <span
+                      key={ti}
+                      style={{
+                        fontSize: 11,
+                        padding: "5px 12px",
+                        background: isHovered
+                          ? "rgba(255,255,255,0.08)"
+                          : "var(--gd-teal-lt)",
+                        color: isHovered
+                          ? "rgba(255,255,255,0.78)"
+                          : "var(--gd-teal-mid)",
+                        letterSpacing: "0.02em",
+                        borderRadius: 999,
+                        fontFamily: "var(--font-dm-sans), sans-serif",
+                        transition: "all 0.3s",
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
