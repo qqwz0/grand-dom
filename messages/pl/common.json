@@ -9,14 +9,14 @@
     "tagline": "Doskonałość w Każdej Dziedzinie"
   },
   "badge": {
-    "new": "Biuro nieruchomości · Warszawa"
+    "new": "Biuro nieruchomości · Grand Dom"
   },
   "hero": {
     "heading": "GRAND DOM",
-    "subheading": "Twój Dom w Sercu Warszawy",
-    "line1": "Twój dom",
-    "line2": "w sercu",
-    "line3": "Warszawy",
+    "subheading": "Znajdź swoje miejsce",
+    "line1": "Znajdź",
+    "line2": "swoje",
+    "line3": "miejsce",
     "text": "Świeże podejście do rynku nieruchomości. Specjalizujemy się w sprzedaży, kupnie i wynajmie nieruchomości w Warszawie i województwie mazowieckim. Dodatkowo oferujemy inwestycje w słonecznej Hiszpanii."
   },
   "specialization": {
@@ -227,20 +227,16 @@
   "stats": {
     "items": [
       {
-        "value": "50+",
-        "label": "Mieszkań w ofercie"
-      },
-      {
         "value": "15",
         "label": "Dzielnic Warszawy"
       },
       {
-        "value": "2024",
+        "value": "2025",
         "label": "Rok założenia"
       },
       {
-        "value": "24/7",
-        "label": "Kontakt z agentem"
+        "value": "10–18",
+        "label": "Godziny pracy"
       }
     ]
   },

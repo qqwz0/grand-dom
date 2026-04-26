@@ -9,14 +9,14 @@
     "tagline": "Excellence in Every Field"
   },
   "badge": {
-    "new": "Real Estate Agency · Warsaw"
+    "new": "Real Estate Agency · Grand Dom"
   },
   "hero": {
     "heading": "GRAND DOM",
-    "subheading": "Your Home in the Heart of Warsaw",
-    "line1": "Your Home",
-    "line2": "in the Heart of",
-    "line3": "Warsaw",
+    "subheading": "Find your place",
+    "line1": "Find",
+    "line2": "your",
+    "line3": "place",
     "text": "A fresh approach to the real estate market. We specialize in sales, purchases and rentals in Warsaw and the Masovian region. We also offer investments in sunny Spain."
   },
   "specialization": {
@@ -219,20 +219,16 @@
   "stats": {
     "items": [
       {
-        "value": "50+",
-        "label": "Properties available"
-      },
-      {
         "value": "15",
         "label": "Warsaw districts"
       },
       {
-        "value": "2024",
+        "value": "2025",
         "label": "Founded"
       },
       {
-        "value": "24/7",
-        "label": "Agent contact"
+        "value": "10–18",
+        "label": "Working hours"
       }
     ]
   },

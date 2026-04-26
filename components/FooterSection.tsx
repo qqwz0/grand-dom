@@ -11,7 +11,6 @@ export default function FooterSection({
   const navLinks = [
     { label: get(["nav", "services"], "Usługi"), href: "#services" },
     { label: get(["nav", "properties"], "Nieruchomości"), href: "#properties" },
-    { label: get(["nav", "spain"], "Hiszpania"), href: "#spain" },
     { label: get(["nav", "contact"], "Kontakt"), href: "#contact" },
   ];
 

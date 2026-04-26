@@ -15,6 +15,7 @@ export default function Header({
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    setScrolled(window.scrollY > 60);
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -43,7 +44,6 @@ export default function Header({
   const navItems = [
     { label: get(["nav", "services"], "Usługi"), href: "#services" },
     { label: get(["nav", "properties"], "Nieruchomości"), href: "#properties" },
-    { label: get(["nav", "spain"], "Hiszpania"), href: "#spain" },
     { label: get(["nav", "contact"], "Kontakt"), href: "#contact" },
   ];
 

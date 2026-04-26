@@ -8,7 +8,6 @@ import HeroSection from "../HeroSection";
 import StatsBar from "../StatsBar";
 import RealEstateServicesSection from "../RealEstateServicesSection";
 import PropertyShowcaseSection from "../PropertyShowcaseSection";
-import SpanishInvestmentSection from "../SpanishInvestmentSection";
 import ContactSection from "../ContactSection";
 import FooterSection from "../FooterSection";
 
@@ -62,8 +61,6 @@ export default function GrandDomVisitCard({ messages }: { messages: any }) {
         />
 
         <PropertyShowcaseSection get={get} />
-
-        <SpanishInvestmentSection get={get} />
 
         <ContactSection get={get} />
       </main>
