@@ -130,16 +130,6 @@
         "Ocena rentowności",
         "Strategia inwestycyjna"
       ]
-    },
-    {
-      "title": "Inwestycje w Hiszpanii",
-      "sub": "Costa del Sol i okolice",
-      "description": "Możliwość inwestowania w słoneczne nieruchomości hiszpańskie z opcjami zarządzania i dochodu pasywnego.",
-      "features": [
-        "Partnerstwa z deweloperami",
-        "Zarządzanie wynajmem",
-        "Dochód pasywny"
-      ]
     }
   ],
   "propertyShowcase": {
@@ -299,7 +289,15 @@
   "footer": {
     "brand": "GRAND DOM",
     "copyright": "© 2026 GRAND DOM. Gotowi, aby zmieniać rzeczywistość.",
-    "tagline": "Prowadzimy Cię od pierwszej rozmowy aż do odebrania kluczy. Bez pośpiechu i bez ukrytych prowizji."
+    "tagline": "Prowadzimy Cię od pierwszej rozmowy aż do odebrania kluczy. Bez pośpiechu i bez ukrytych prowizji.",
+    "legalTitle": "Informacje prawne",
+    "privacyLink": "Polityka prywatności"
+  },
+  "cookieConsent": {
+    "text": "Używamy plików cookies, aby poprawić działanie strony i analizować ruch. Klikając Akceptuję, wyrażasz zgodę na wszystkie pliki cookies.",
+    "privacyLinkLabel": "Polityka prywatności",
+    "accept": "Akceptuję",
+    "decline": "Tylko niezbędne"
   },
   "languages": {
     "available": [

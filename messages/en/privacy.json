@@ -1,0 +1,40 @@
+{
+  "title": "Privacy Policy",
+  "intro": "This privacy policy describes how GRAND DOM processes and protects the personal data of users who interact with our website.",
+  "lastUpdated": "Last updated: April 26, 2026",
+  "backToHome": "Back to homepage",
+  "sections": [
+    {
+      "heading": "1. Data Controller",
+      "body": "The controller of your personal data is GRAND DOM, based in Warsaw, Poland. Contact: granddom7@op.pl, tel. +48 886 193 598."
+    },
+    {
+      "heading": "2. Data We Collect",
+      "body": "Through our contact form we collect: full name, email address, phone number (optional), and the content of your message including your property preferences. Providing this data is voluntary."
+    },
+    {
+      "heading": "3. Purpose of Processing",
+      "body": "We process your data solely to respond to your enquiry, provide real-estate brokerage services and, with your consent, to send tailored property offers. The legal basis is Article 6(1)(a), (b) and (f) of the GDPR."
+    },
+    {
+      "heading": "4. Retention Period",
+      "body": "We keep your data no longer than necessary for the purpose for which it was collected — typically up to 24 months after the last contact, unless applicable law requires a longer retention period (e.g. accounting records)."
+    },
+    {
+      "heading": "5. Your Rights",
+      "body": "You have the right to access, rectify, erase, restrict and port your data, as well as to object and lodge a complaint with the President of the Polish Personal Data Protection Office. To exercise these rights, contact granddom7@op.pl."
+    },
+    {
+      "heading": "6. Cookies",
+      "body": "Our site uses cookies that are strictly necessary for its operation. Analytics and marketing cookies are activated only after you give consent via the cookie banner. You can change your preferences at any time in your browser settings."
+    },
+    {
+      "heading": "7. Data Sharing",
+      "body": "We do not sell your data. We may entrust it to trusted service providers (e.g. contact form provider, hosting, accounting) under data-processing agreements compliant with the GDPR."
+    },
+    {
+      "heading": "8. Contact",
+      "body": "For any data protection matters, please contact us at granddom7@op.pl or +48 886 193 598."
+    }
+  ]
+}

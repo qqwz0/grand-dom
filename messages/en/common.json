@@ -122,16 +122,6 @@
         "Profitability assessment",
         "Investment strategy"
       ]
-    },
-    {
-      "title": "Investments in Spain",
-      "sub": "Costa del Sol & surroundings",
-      "description": "Opportunity to invest in sunny Spanish properties with management and passive income options.",
-      "features": [
-        "Partnerships with developers",
-        "Rental management",
-        "Passive income"
-      ]
     }
   ],
   "propertyShowcase": {
@@ -291,7 +281,15 @@
   "footer": {
     "brand": "GRAND DOM",
     "copyright": "© 2026 GRAND DOM. Ready to change reality.",
-    "tagline": "We guide you from the first conversation to receiving the keys. No rush, no hidden fees."
+    "tagline": "We guide you from the first conversation to receiving the keys. No rush, no hidden fees.",
+    "legalTitle": "Legal",
+    "privacyLink": "Privacy Policy"
+  },
+  "cookieConsent": {
+    "text": "We use cookies to improve site performance and analyse traffic. By clicking Accept you agree to all cookies.",
+    "privacyLinkLabel": "Privacy Policy",
+    "accept": "Accept",
+    "decline": "Essential only"
   },
   "languages": {
     "available": [

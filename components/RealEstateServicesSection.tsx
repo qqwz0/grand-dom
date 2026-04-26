@@ -54,7 +54,7 @@ export default function RealEstateServicesSection({
           >
             {get(
               ["realEstateServicesDescription"],
-              "Mały zespół, który zna Warszawę dzielnica po dzielnicy."
+              "Mały zespół, który zna Warszawę dzielnica po dzielnicy.",
             )}
           </p>
         </div>
@@ -87,8 +87,7 @@ export default function RealEstateServicesSection({
                     ? "0 22px 50px -20px rgba(20,60,40,0.45)"
                     : "0 1px 2px rgba(20,40,30,0.04), 0 8px 24px -16px rgba(20,40,30,0.12)",
                   transform: isHovered ? "translateY(-4px)" : "translateY(0)",
-                  transition:
-                    "all 0.35s cubic-bezier(0.2, 0.6, 0.2, 1)",
+                  transition: "all 0.35s cubic-bezier(0.2, 0.6, 0.2, 1)",
                 }}
               >
                 {/* Ghost number */}
@@ -137,7 +136,9 @@ export default function RealEstateServicesSection({
                     fontFamily: "var(--font-dm-sans), sans-serif",
                     fontSize: 14,
                     lineHeight: 1.75,
-                    color: isHovered ? "rgba(255,255,255,0.7)" : "var(--gd-muted)",
+                    color: isHovered
+                      ? "rgba(255,255,255,0.7)"
+                      : "var(--gd-muted)",
                     marginBottom: 22,
                     transition: "color 0.3s",
                   }}

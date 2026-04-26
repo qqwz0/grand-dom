@@ -1,5 +1,10 @@
-﻿import React from "react";
+"use client";
+import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const SUPPORTED = ["pl", "ua", "en"] as const;
 
 export default function FooterSection({
   get,
@@ -8,11 +13,18 @@ export default function FooterSection({
   get: (path: string[], fallback?: any) => any;
   brandName: string;
 }) {
+  const pathname = usePathname() || "/pl";
+  const seg = pathname.split("/")[1];
+  const locale = (SUPPORTED as readonly string[]).includes(seg) ? seg : "pl";
+
   const navLinks = [
     { label: get(["nav", "services"], "Usługi"), href: "#services" },
     { label: get(["nav", "properties"], "Nieruchomości"), href: "#properties" },
     { label: get(["nav", "contact"], "Kontakt"), href: "#contact" },
   ];
+
+  const legalTitle = get(["footer", "legalTitle"], "Legal");
+  const privacyLabel = get(["footer", "privacyLink"], "Polityka prywatności");
 
   return (
     <footer
@@ -61,7 +73,7 @@ export default function FooterSection({
             </p>
           </div>
 
-          {/* Navigation links */}
+          {/* Navigation links + legal */}
           <div className="gd-footer-links" style={{ display: "flex", gap: 64, flexWrap: "wrap" }}>
             <div>
               <div className="gd-label" style={{ color: "var(--gd-gold)", marginBottom: 20 }}>
@@ -92,6 +104,34 @@ export default function FooterSection({
                   {label}
                 </a>
               ))}
+            </div>
+
+            <div>
+              <div className="gd-label" style={{ color: "var(--gd-gold)", marginBottom: 20 }}>
+                {legalTitle}
+              </div>
+              <Link
+                href={`/${locale}/privacy`}
+                style={{
+                  display: "block",
+                  fontFamily: "var(--font-dm-sans), sans-serif",
+                  fontSize: 13,
+                  color: "rgba(255,255,255,0.38)",
+                  textDecoration: "none",
+                  marginBottom: 10,
+                  transition: "color 0.2s",
+                }}
+                onMouseEnter={(e) =>
+                  ((e.currentTarget as HTMLAnchorElement).style.color =
+                    "rgba(255,255,255,0.75)")
+                }
+                onMouseLeave={(e) =>
+                  ((e.currentTarget as HTMLAnchorElement).style.color =
+                    "rgba(255,255,255,0.38)")
+                }
+              >
+                {privacyLabel}
+              </Link>
             </div>
           </div>
         </div>

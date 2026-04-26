@@ -3,7 +3,7 @@ import { SUPPORTED_LOCALES } from "@/lib/translations";
 export default function sitemap() {
   const baseUrl = "https://granddom.com";
 
-  const routes = ["", "/contact"];
+  const routes = ["", "/contact", "/privacy"];
 
   interface UrlEntry {
     url: string;
@@ -27,8 +27,8 @@ export default function sitemap() {
       urls.push({
         url: `${baseUrl}/${locale}${route}`,
         lastModified: new Date(),
-        changeFrequency: route === "" ? "daily" : "monthly",
-        priority: route === "" ? 1 : 0.8,
+        changeFrequency: route === "" ? "daily" : route === "/privacy" ? "yearly" : "monthly",
+        priority: route === "" ? 1 : route === "/privacy" ? 0.3 : 0.8,
       });
     });
   });
