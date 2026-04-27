@@ -236,9 +236,12 @@
     border-bottom: none;
   }
 
-  /* Services: 3-col → 1-col */
+  /* Services: 6-col → 1-col, reset all span overrides */
   .gd-services-grid {
     grid-template-columns: 1fr !important;
+  }
+  .gd-services-grid > * {
+    grid-column: 1 / -1 !important;
   }
 
   /* Property showcase: side-by-side → stack */

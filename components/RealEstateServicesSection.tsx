@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import React, { useState } from "react";
 
 export default function RealEstateServicesSection({
@@ -34,7 +34,6 @@ export default function RealEstateServicesSection({
           >
             {get(["realEstateServicesTitle"], "Nasze usługi")}
           </h2>
-          {/* Gold divider */}
           <div
             style={{
               width: 48,
@@ -59,17 +58,25 @@ export default function RealEstateServicesSection({
           </p>
         </div>
 
-        {/* 3-column grid */}
+        {/*
+          6-column grid:
+          — cards 0–2 each span 2 cols → 3 equal cards on top row
+          — cards 3–4 each span 3 cols → 2 wider cards on bottom row
+          On mobile (.gd-services-grid) collapses to 1 column,
+          and span overrides don't matter since there's only 1 col.
+        */}
         <div
           className="gd-services-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
+            gridTemplateColumns: "repeat(6, 1fr)",
             gap: 18,
           }}
         >
           {realEstateServices.map((service: any, i: number) => {
             const isHovered = hovered === i;
+            const colSpan = i < 3 ? "span 2" : "span 3";
+
             return (
               <div
                 key={i}
@@ -77,6 +84,7 @@ export default function RealEstateServicesSection({
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
                 style={{
+                  gridColumn: colSpan,
                   background: isHovered ? "var(--gd-teal)" : "#ffffff",
                   padding: "42px 36px 38px",
                   borderRadius: 14,

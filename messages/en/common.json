@@ -286,7 +286,7 @@
     "privacyLink": "Privacy Policy"
   },
   "cookieConsent": {
-    "text": "We use cookies to improve site performance and analyse traffic. By clicking Accept you agree to all cookies.",
+    "text": "We use cookies and Google analytics tools (Google Tag Manager, Analytics) to improve site performance and measure traffic. By clicking Accept you allow them to run.",
     "privacyLinkLabel": "Privacy Policy",
     "accept": "Accept",
     "decline": "Essential only"

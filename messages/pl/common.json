@@ -294,7 +294,7 @@
     "privacyLink": "Polityka prywatności"
   },
   "cookieConsent": {
-    "text": "Używamy plików cookies, aby poprawić działanie strony i analizować ruch. Klikając Akceptuję, wyrażasz zgodę na wszystkie pliki cookies.",
+    "text": "Używamy plików cookies oraz narzędzi analitycznych Google (Google Tag Manager, Analytics), aby poprawić działanie strony i mierzyć ruch. Klikając Akceptuję, wyrażasz zgodę na ich uruchomienie.",
     "privacyLinkLabel": "Polityka prywatności",
     "accept": "Akceptuję",
     "decline": "Tylko niezbędne"

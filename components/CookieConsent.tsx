@@ -35,6 +35,13 @@ export default function CookieConsent({ messages }: { messages: Messages }) {
     } catch {
       /* ignore */
     }
+    try {
+      window.dispatchEvent(
+        new CustomEvent("gd_cookie_consent_change", { detail: value })
+      );
+    } catch {
+      /* ignore */
+    }
     setVisible(false);
   };
 
@@ -74,18 +81,23 @@ export default function CookieConsent({ messages }: { messages: Messages }) {
           fontSize: 13,
           lineHeight: 1.65,
           color: "var(--gd-ink)",
+          marginBottom: 12,
+        }}
+      >
+        {text}
+      </p>
+      <Link
+        href={`/${locale}/privacy`}
+        style={{
+          display: "inline-block",
+          fontSize: 12,
+          color: "var(--gd-teal)",
+          textDecoration: "underline",
           marginBottom: 16,
         }}
       >
-        {text}{" "}
-        <Link
-          href={`/${locale}/privacy`}
-          style={{ color: "var(--gd-teal)", textDecoration: "underline" }}
-        >
-          {privacyLabel}
-        </Link>
-        .
-      </p>
+        {privacyLabel}
+      </Link>
       <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
         <button
           onClick={() => setChoice("accepted")}

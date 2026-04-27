@@ -3,6 +3,7 @@ import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import { headers } from "next/headers";
 import "./globals.css";
 import CookieConsent from "@/components/CookieConsent";
+import GoogleTagManager from "@/components/GoogleTagManager";
 import { isValidLocale, getMessages, type SupportedLocale } from "@/lib/translations";
 
 const cormorant = Cormorant_Garamond({
@@ -75,6 +76,7 @@ export default async function RootLayout({
       className={`${cormorant.variable} ${dmSans.variable}`}
     >
       <body>
+        <GoogleTagManager />
         {children}
         <CookieConsent messages={cookieMsgs} />
       </body>
