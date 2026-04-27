@@ -102,7 +102,7 @@ export default function HeroSection({
             </em>
             {get(["hero", "line2"], "") && <br />}
             {get(["hero", "line3"], "")}
-            <span style={{ color: "var(--gd-gold)" }}>.</span>
+            {/* <span style={{ color: "var(--gd-gold)" }}>.</span> */}
           </h1>
 
           {/* Subtext */}
